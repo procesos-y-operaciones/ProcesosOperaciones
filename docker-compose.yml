@@ -1,0 +1,12 @@
+version: '2'
+services:
+  pyo_db:
+    image: mysql:5.7.22
+    ports:
+      - "4000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: procesosyoperaciones
+      MYSQL_USER: user
+      MYSQL_PASSWORD: procesosyoperaciones
+      MYSQL_DATABASE: ProcesosOperaciones_production
+      MYSQL_HOST: points_db

@@ -51,5 +51,3 @@ test:
 production:
   <<: *default
   database: ProcesosOperaciones_production
-  username: ProcesosOperaciones
-  password: <%= ENV['PROCESOSOPERACIONES_DATABASE_PASSWORD'] %>

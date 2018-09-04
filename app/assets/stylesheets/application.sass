@@ -10,9 +10,31 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require toastr
  */
- 
+
 @import "bootstrap"
+
+/* COLORS */
+$main: #D8DCE7
+$first: #01518C
+$second: #E98F05
+$third: #DFE3EC
+
+/* BODY */
+html, body
+  padding-top: 65px
+  font-family: 'Open Sans', 'Josefin Slab', 'Arvo', 'Lato'
+  font-style: normal
+  font-variant: normal
+  font-weight: 400
+  line-height: 20px
+
+/* NAVBAR */
+.nav-bg
+  background-color: $main
+
+.nav-link
+    font-weight: bold
+    color: $first !important

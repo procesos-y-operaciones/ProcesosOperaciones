@@ -35,6 +35,19 @@
         </ul>
       </div>
     </nav>
+    <% if notice %>
+      <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong><%= notice %></strong>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong><%= alert %></strong>
+      </div>
+    <% end %>
     <% unless flash.empty? %>
       <script type="text/javascript">
           <% flash.each do |f| %>
@@ -43,10 +56,10 @@
           <% end %>
       </script>
     <% end %>
-    <div class="mx-auto p-4" style="width:100%">
-      <%= yield %>
+    <div class="container">
+      <div class="row p-3">
+        <%= yield %>
+      </div>
     </div>
-
-
   </body>
 </html>

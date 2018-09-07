@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Generation Ranges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @generation_ranges.each do |generation_range| %>
+      <tr>
+        <td><%= link_to 'Show', generation_range %></td>
+        <td><%= link_to 'Edit', edit_generation_range_path(generation_range) %></td>
+        <td><%= link_to 'Destroy', generation_range, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Generation Range', new_generation_range_path %>

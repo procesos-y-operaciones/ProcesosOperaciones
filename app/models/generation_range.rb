@@ -1,0 +1,2 @@
+class GenerationRange < ApplicationRecord
+end

@@ -45,6 +45,8 @@ gem 'cancan'
 gem 'rails-i18n'
 # I18N DEVISE
 gem 'devise-i18n'
+# Annotate
+gem 'annotate'
 
 
 group :development, :test do

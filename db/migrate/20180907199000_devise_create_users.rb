@@ -7,9 +7,28 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
     create_table :users do |t|
 
       #Fields
-      t.string  :name
       t.bigint  :document
-      t.integer :role
+      t.date    :expedition_date
+      t.string  :expedition_place
+      t.string  :first_name
+      t.string  :second_name
+      t.string  :first_lastname
+      t.string  :second_lastname
+      t.date    :born_date
+      t.string  :personal_mail
+      t.string  :corporative_mail
+      t.string  :telephone
+      t.string  :celphone
+      t.string  :address
+
+      #Dependences
+      t.belongs_to  :identification_types, index: true
+      t.belongs_to  :departaments, index: true
+      t.belongs_to  :cities, index: true
+      t.belongs_to  :areas, index: true
+      t.belongs_to  :charges, index: true
+      t.belongs_to  :genres, index: true
+      t.belongs_to  :generation_ranges, index: true
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

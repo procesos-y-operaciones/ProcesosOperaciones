@@ -25,7 +25,7 @@
   </div>
   <br />
   <div class="container-center">
-    <%= form_for current_user do |f| %>
+    <%= form_for(current_user, :url => registration_path(current_user))  do |f| %>
       <%= f.hidden_field :terms, value:true %>
       <%= f.submit "Acepto términos y condiciones", class:"btn btn-default" %>
     <% end %>

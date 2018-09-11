@@ -27,7 +27,7 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to current_user.name.upcase, edit_user_registration_path, class:"nav-link" %>
+              <%= link_to current_user.first_name.upcase + " " + current_user.first_lastname.upcase, edit_user_registration_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "CERRAR SESIÓN", destroy_user_session_path, method: :delete, class:"nav-link" %>
@@ -49,14 +49,7 @@
         <strong><%= alert %></strong>
       </div>
     <% end %>
-    <% unless flash.empty? %>
-      <script type="text/javascript">
-          <% flash.each do |f| %>
-            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-            toastr['<%= type %>']('<%= f[1] %>');
-          <% end %>
-      </script>
-    <% end %>
+
     <div class="container.fluid">
       <div class="row p-3">
         <%= yield %>

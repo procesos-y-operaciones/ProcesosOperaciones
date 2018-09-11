@@ -20,6 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string  :telephone
       t.string  :celphone
       t.string  :address
+      t.boolean :terms, default: false
 
       #Dependences
       t.belongs_to  :identification_types, index: true
@@ -29,6 +30,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.belongs_to  :charges, index: true
       t.belongs_to  :genres, index: true
       t.belongs_to  :generation_ranges, index: true
+      t.belongs_to  :roles, index: true
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

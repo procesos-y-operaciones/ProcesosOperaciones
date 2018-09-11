@@ -1216,6 +1216,6 @@ Role.create([
 ])
 
 User.create([
-    {document: 1032459412, first_name: 'JONATHAN', last_name: 'GRANADOS', email: 'jonathan@gmail.com', password: 'Jon123', password_confirmation: 'Jon123', roles_id: 1},
-    {document: 1234567890, first_name: 'USUARIO', last_name: 'TESTEO', email: 'test@gmail.com', password: 'Test123', password_confirmation: 'Test123', roles_id: 2},
+    {document: 1032459412, first_name: 'JONATHAN', first_lastname: 'GRANADOS', email: 'jonathan@gmail.com', password: 'Jon123', password_confirmation: 'Jon123', roles_id: 1},
+    {document: 1234567890, first_name: 'USUARIO', first_lastname: 'TESTEO', email: 'test@gmail.com', password: 'Test123', password_confirmation: 'Test123', roles_id: 2},
 ])

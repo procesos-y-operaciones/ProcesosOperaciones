@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :identification_types
   resources :cities
   resources :departaments
-  devise_for :users
+  
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   root to: "home#index"
 

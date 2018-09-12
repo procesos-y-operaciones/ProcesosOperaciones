@@ -13,5 +13,5 @@ class User < ApplicationRecord
       "NO ASIGNADO"
     end
   end
-  
+
 end

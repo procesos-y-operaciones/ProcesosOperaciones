@@ -7,16 +7,15 @@
   <br />
   <br />
 
-
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="input-group">
-      <span class="input-group-text"><i class="fa">&#xf007;</i></span>
+      <span class="input-group-text"><i class="fa" style="width:22px">&#xf007;</i></span>
       <%= f.email_field :email, placeholder:"E-mail", autofocus:true, autocomplete:"email", class:"form-control" %>
     </div>
 
     <div class="input-group">
-      <span class="input-group-text"><i class="fa">&#xf084;</i></span>
+      <span class="input-group-text"><i class="fa" style="width:22px">&#xf084;</i></span>
       <%= f.password_field :password, placeholder: "Contraseña", autocomplete: "off", class:"form-control" %>
     </div>
 

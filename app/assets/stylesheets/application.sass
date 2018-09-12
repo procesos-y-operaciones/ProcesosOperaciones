@@ -18,8 +18,8 @@
 
 /* COLORS */
 $main: #D8DCE7
-$first: #01518C
-$second: #E98F05
+$first: #E98F05
+$second: #01518C
 $third: #DFE3EC
 $white: #fff
 $darkgrey: #555555
@@ -40,45 +40,106 @@ $black: #000
     color: darken($grey, 2.5%)
 .black
     color: darken($black, 2.5%)
+.hw
+    width: 50%
+.fw
+    width: 100%
+.shadow
+    box-shadow: 0 0 20px darken($grey, 2.5%)
+
+thead tr th
+    color: darken($first, 2.5%)
 
 /* BUTTONS */
-
+.btn
+    border-radius: 5px
+    padding: 10px 30px
+    font-size: 16px !important
+    font-weight: bold
+.btn-circle
+    border-radius: 100%
+    height: 60px
+    width: 60px
+    display: table-cell
+    padding: 30px
+    text-align: center
+    vertical-align: middle
+    font-size: 45px
+    transition: .5s
+.minibtn
+    margin: 5px
+    border-radius: 5px
+    padding: 5px 10px
+    font-size: 16px !important
+.btn-erease
+    background: transparent
+    border: 0px
+    padding: 0px
+    margin: 0px
 .btn-default, .btn-default:link, .btn-default:visited
-    border: 1px solid darken($first, 2.5%)
-    background-color: darken($first, 2.5%)
+    border: 1px solid darken($second, 2.5%)
+    background-color: darken($second, 2.5%)
     color: darken($white, 2.5%)
 .btn-default:hover
-    border: 1px solid darken($main, 2.5%)
+    border: 1px solid darken($second, 2.5%)
     background-color: darken($white, 2.5%) !important
-    color: darken($main, 2.5%)
+    color: darken($second, 2.5%)
 .btn-default:active
-    border: 1px solid darken($main, 2.5%)
+    border: 1px solid darken($second, 2.5%)
     background-color: darken($white, 2.5%)
-    color: darken($main, 2.5%)
+    color: darken($second, 2.5%)
 .btn-inverse, .btn-inverse:link, .btn-inverse:visited
     background: darken($white, 2.5%)
-    border: 6px double darken($main, 2.5%)
+    border: 6px double darken($second, 2.5%)
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46)
-    color: darken($main, 2.5%)
+    color: darken($second, 2.5%)
 .btn-inverse:hover
     border-color: darken($grey, 2.5%)
     color: darken($grey, 2.5%)
 .btn-inverse:active
     border-color: darken($grey, 2.5%)
     color: darken($grey, 2.5%)
-
 .btn-grad, .btn-grad:link, .btn-grad:visited
-    background: darken($main, 2.5%)
-    background: linear-gradient(to right, darken($main, 2.5%), darken($main, 2.5%))
+    background: darken($second, 2.5%)
+    background: linear-gradient(to right, darken($second, 2.5%), darken($main, 2.5%))
     color: darken($white, 2.5%)
 .btn-grad:hover
-    border: 1px solid darken($main, 2.5%)
-    background: darken($main, 2.5%) !important
-    color: darken($main, 2.5%)
+    border: 1px solid darken($second, 2.5%)
+    background: darken($white, 2.5%) !important
+    color: darken($second, 2.5%)
 .btn-grad:active
-    border: 1px solid darken($main, 2.5%)
+    border: 1px solid darken($second, 2.5%)
     background: darken($white, 2.5%)
-    color: darken($main, 2.5%)
+    color: darken($second, 2.5%)
+
+.link, .link:link, .link:visited
+    margin: 5px
+    background-color: transparent !important
+    color: darken($first, 2.5%)
+.link:hover
+    background-color: transparent !important
+    text-decoration: none !important
+    color: darken($second, 2.5%)
+.link:active
+    background-color: transparent !important
+    text-decoration: none !important
+    color: darken($second, 2.5%)
+
+.link-inverse, .link-inverse:link, .link-inverse:visited
+    margin: 0 10px
+    background-color: transparent !important
+    color: darken($white, 2.5%)
+    font-size: 15px
+    font-weight: bold
+.link-inverse:hover
+    background-color: transparent !important
+    text-decoration: none !important
+    color: darken($first, 2.5%)
+.link-inverse:active
+    background-color: transparent !important
+    text-decoration: none !important
+    color: darken($first, 2.5%)
+
 
 /* BODY */
 html, body
@@ -137,6 +198,3 @@ h1, h2, h3, h4, h5, h6, p, th, ol, li, label, select, input
 .input-group-addon
     border: 0px !important
     background-color:  darken($white, 2.5%) !important
-
-.fa
-  width: 22px

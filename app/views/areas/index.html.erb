@@ -11,7 +11,7 @@
     <span class="fa">&#xf002;</span>
   </button>
   <%= link_to areas_path, class:"minibtn btn-default" do %>
-    <span class="fa">&#xf067;</span>
+    <span class="fa">&#xf021;</span>
   <% end %>
 </div>
 <% end %>
@@ -20,8 +20,8 @@
 <table class="table table-responsive-sm">
   <thead class="first">
     <tr>
-      <th>Código</th>
-      <th>Nombre</th>
+      <th><%= sort_link @search, :code, "Código", {}, :class => 'link' %></th>
+      <th><%= sort_link @search, :name, "Nombre", {}, :class => 'link' %></th>
       <th></th>
     </tr>
   </thead>
@@ -47,5 +47,5 @@
 </div>
 
 <p class="first">
-  Áreas <%= @page %>-<%= @areas.length + @page.to_i - 1 %> de <%= @search.result.length %>
+  Items <%= @page %>-<%= @areas.length + @page.to_i - 1 %> de <%= @search.result.length %>
 </p>

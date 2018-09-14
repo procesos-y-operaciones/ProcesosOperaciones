@@ -2,6 +2,7 @@ es:
   general:
     messages:
       delete: ¿Está seguro de borrar este elemento?
+      mayus_num: Sólo se pertmiten espacios, letras en mayúsculas y números. (No eñes, guiones, comas, etc...)
   devise:
     confirmations:
       confirmed: Tu cuenta ha sido confirmada satisfactoriamente.

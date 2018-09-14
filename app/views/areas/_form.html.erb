@@ -2,7 +2,6 @@
   <% if area.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(area.errors.count, "error") %> prohibited this area from being saved:</h2>
-
       <ul>
       <% area.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,7 +10,26 @@
     </div>
   <% end %>
 
+  <br />
+
+  <%= form.label :code, "Código", class:'form-label' %>
+  <div class="input-group">
+    <%= form.text_field :code, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+  </div>
+
+  <%= form.label :name, "Nombre", class:'form-label' %>
+  <div class="input-group">
+    <%= form.text_field :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+  </div>
+
+  <%= form.label :area, "Dependencia", class:'form-label' %>
+  <div class="input-group">
+    <%= form.collection_select(:areas_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
+  </div>
+
+  <br />
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Guardar', class:"btn btn-default floatRight" %>
   </div>
 <% end %>

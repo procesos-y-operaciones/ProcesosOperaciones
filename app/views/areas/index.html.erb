@@ -1,35 +1,51 @@
 <%= javascript_include_tag "areas" %>
 
-<div class="col-sm-12 border rounded p-5">
+<h2 class="center second">Áreas</h2>
 
-  <h2 class="center second">Áreas</h2>
-
-  <hr />
-
-  <table class="table table-responsive-sm">
-    <thead class="first">
-      <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @areas.each do |area| %>
-        <tr class='clickable-row' data-href='<%= edit_area_path(area) %>'>
-          <td><%= area.code %></td>
-          <td><%= area.name %></td>
-          <td><%= link_to 'Editar', edit_area_path(area) %></td>
-          <td><%= link_to 'Borrar', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Area', new_area_path %>
-
+<hr />
+<%= search_form_for @search, url: areas_url, class:"" do |f| %>
+<div class="input-group">
+  <%= f.text_field :code_cont, placeholder: "CÓDIGO", class:"form-control" %>
+  <%= f.text_field :name_cont, placeholder: "NOMBRE", class:"form-control" %>
+  <button type="submit" class="minibtn btn-default">
+    <span class="fa">&#xf002;</span>
+  </button>
+  <%= link_to areas_path, class:"minibtn btn-default" do %>
+    <span class="fa">&#xf067;</span>
+  <% end %>
 </div>
+<% end %>
+<hr />
+
+<table class="table table-responsive-sm">
+  <thead class="first">
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @areas.each do |area| %>
+      <tr class="clickable-box">
+        <td class='clickable-row' data-href='<%= edit_area_path(area) %>'><%= area.code %></td>
+        <td class='clickable-row' data-href='<%= edit_area_path(area) %>'><%= area.name %></td>
+        <td><%= link_to area, method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
+      </tr>
+    <% end %>
+    <tr class="clickable-box">
+      <td class='clickable-row' data-href='<%= new_area_path %>'></td>
+      <td class='clickable-row' data-href='<%= new_area_path %>'>CREAR ÁREA</td>
+      <td ><%= link_to new_area_path do %><i class="fa fa-plus"></i><% end %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="floatRight">
+  <%= will_paginate @areas, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class:"pagination-lg" %>
+</div>
+
+<p class="first">
+  Áreas <%= @page %>-<%= @areas.length + @page.to_i - 1 %> de <%= @search.result.length %>
+</p>

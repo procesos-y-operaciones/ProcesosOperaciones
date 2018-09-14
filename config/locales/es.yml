@@ -1,4 +1,7 @@
 es:
+  general:
+    messages:
+      delete: ¿Está seguro de borrar este elemento?
   devise:
     confirmations:
       confirmed: Tu cuenta ha sido confirmada satisfactoriamente.

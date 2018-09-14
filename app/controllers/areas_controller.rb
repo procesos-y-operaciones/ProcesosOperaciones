@@ -4,7 +4,9 @@ class AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.all
+    @search = Area.get_all_sorted.ransack(params[:q])
+    @areas = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /areas/1

@@ -15,29 +15,29 @@ ActiveRecord::Schema.define(version: 20180907199001) do
   create_table "areas", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.integer "areas_id"
+    t.integer "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["areas_id"], name: "index_areas_on_areas_id"
+    t.index ["area_id"], name: "index_areas_on_area_id"
   end
 
   create_table "charges", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.integer "total_employees"
-    t.integer "areas_id"
+    t.integer "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["areas_id"], name: "index_charges_on_areas_id"
+    t.index ["area_id"], name: "index_charges_on_area_id"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.integer "departaments_id"
+    t.integer "departament_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["departaments_id"], name: "index_cities_on_departaments_id"
+    t.index ["departament_id"], name: "index_cities_on_departament_id"
   end
 
   create_table "contract_types", force: :cascade do |t|
@@ -49,10 +49,12 @@ ActiveRecord::Schema.define(version: 20180907199001) do
 
   create_table "contracts", force: :cascade do |t|
     t.integer "employees"
-    t.integer "contract_types_id"
+    t.integer "contract_type_id"
+    t.integer "charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contract_types_id"], name: "index_contracts_on_contract_types_id"
+    t.index ["charge_id"], name: "index_contracts_on_charge_id"
+    t.index ["contract_type_id"], name: "index_contracts_on_contract_type_id"
   end
 
   create_table "departaments", force: :cascade do |t|
@@ -87,14 +89,14 @@ ActiveRecord::Schema.define(version: 20180907199001) do
   create_table "goals", force: :cascade do |t|
     t.integer "phases_number"
     t.string "comment"
-    t.integer "periods_id"
-    t.integer "goal_types_id"
-    t.integer "users_id"
+    t.integer "period_id"
+    t.integer "goal_type_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["goal_types_id"], name: "index_goals_on_goal_types_id"
-    t.index ["periods_id"], name: "index_goals_on_periods_id"
-    t.index ["users_id"], name: "index_goals_on_users_id"
+    t.index ["goal_type_id"], name: "index_goals_on_goal_type_id"
+    t.index ["period_id"], name: "index_goals_on_period_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "identification_types", force: :cascade do |t|
@@ -144,14 +146,14 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.string "celphone"
     t.string "address"
     t.boolean "terms", default: false
-    t.integer "identification_types_id"
-    t.integer "departaments_id"
-    t.integer "cities_id"
-    t.integer "areas_id"
-    t.integer "charges_id"
-    t.integer "genres_id"
-    t.integer "generation_ranges_id"
-    t.integer "roles_id"
+    t.integer "identification_type_id"
+    t.integer "departament_id"
+    t.integer "citie_id"
+    t.integer "area_id"
+    t.integer "charge_id"
+    t.integer "genre_id"
+    t.integer "generation_range_id"
+    t.integer "role_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -159,16 +161,16 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["areas_id"], name: "index_users_on_areas_id"
-    t.index ["charges_id"], name: "index_users_on_charges_id"
-    t.index ["cities_id"], name: "index_users_on_cities_id"
-    t.index ["departaments_id"], name: "index_users_on_departaments_id"
+    t.index ["area_id"], name: "index_users_on_area_id"
+    t.index ["charge_id"], name: "index_users_on_charge_id"
+    t.index ["citie_id"], name: "index_users_on_citie_id"
+    t.index ["departament_id"], name: "index_users_on_departament_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["generation_ranges_id"], name: "index_users_on_generation_ranges_id"
-    t.index ["genres_id"], name: "index_users_on_genres_id"
-    t.index ["identification_types_id"], name: "index_users_on_identification_types_id"
+    t.index ["generation_range_id"], name: "index_users_on_generation_range_id"
+    t.index ["genre_id"], name: "index_users_on_genre_id"
+    t.index ["identification_type_id"], name: "index_users_on_identification_type_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["roles_id"], name: "index_users_on_roles_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

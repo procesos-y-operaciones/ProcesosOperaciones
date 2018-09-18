@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    case current_user.roles_id
+    case current_user.role_id
     when 1
       render :admin
     when 2

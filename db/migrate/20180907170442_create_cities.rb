@@ -5,7 +5,7 @@ class CreateCities < ActiveRecord::Migration[5.1]
       t.string  :name
       t.string  :code
 
-      t.belongs_to  :departaments, index: true
+      t.belongs_to  :departament, index: true
 
       t.timestamps
     end

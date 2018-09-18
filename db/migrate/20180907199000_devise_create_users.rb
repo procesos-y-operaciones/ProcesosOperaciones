@@ -23,14 +23,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.boolean :terms, default: false
 
       #Dependences
-      t.belongs_to  :identification_types, index: true
-      t.belongs_to  :departaments, index: true
-      t.belongs_to  :cities, index: true
-      t.belongs_to  :areas, index: true
-      t.belongs_to  :charges, index: true
-      t.belongs_to  :genres, index: true
-      t.belongs_to  :generation_ranges, index: true
-      t.belongs_to  :roles, index: true
+      t.belongs_to  :identification_type, index: true
+      t.belongs_to  :departament, index: true
+      t.belongs_to  :citie, index: true
+      t.belongs_to  :area, index: true
+      t.belongs_to  :charge, index: true
+      t.belongs_to  :genre, index: true
+      t.belongs_to  :generation_range, index: true
+      t.belongs_to  :role, index: true
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

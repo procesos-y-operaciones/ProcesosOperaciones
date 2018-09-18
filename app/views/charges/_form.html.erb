@@ -24,8 +24,24 @@
 
   <%= form.label :area, "Dependencia", class:'form-label' %>
   <div class="input-group">
-    <%= form.collection_select(:areas_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
+    <%= form.collection_select(:area_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
   </div>
+
+  <%= form.label :contracts, "Número de Contratos", class:"form-label" %>
+  <div id="contracts_container" class="contracts">
+    <%= form.fields_for :contracts do |contract| %>
+      <%= render 'contract_fields', f: contract %>
+    <% end %>
+  </div>
+
+  <div class="input-group">
+    <%= link_to_add_association form, :contracts, data: {association_insertion_node: '.contracts', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
+      <span class="fa fa-plus"></span>
+      Agregar Contrato
+    <% end %>
+  </div>
+
+
 
   <br />
 

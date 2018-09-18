@@ -71,6 +71,8 @@ class ChargesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def charge_params
-      params.require(:charge).permit(:code, :name, contracts_attributes: Contract.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:charge).permit(
+        :code, :name, contracts_attributes: Contract.attribute_names.map(&:to_sym).push(:_destroy)
+      )
     end
 end

@@ -7,7 +7,7 @@
   <div class="input-group">
     <%= f.text_field :code_cont, placeholder: "CÓDIGO", class:"col-sm-3 form-control" %>
     <%= f.text_field :name_cont, placeholder: "NOMBRE", class:"col-sm-4 form-control" %>
-    <%= f.select :areas_id_eq, options_from_collection_for_select(Area.get_all_sorted, :id, :name), {include_blank: "AREA"}, {class:"col-sm-5 form-control"} %>
+    <%= f.select :area_id_eq, options_from_collection_for_select(Area.get_all_sorted, :id, :name), {include_blank: "AREA"}, {class:"col-sm-5 form-control"} %>
   </div>
   <div class="col-sm-3 offset-md-9">
     <button type="submit" class="minibtn btn-default">

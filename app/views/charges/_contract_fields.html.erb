@@ -1,0 +1,11 @@
+<div class='nested-fields'>
+
+  <div class="input-group">
+    <%= f.collection_select(:contract_type_id, ContractType.get_all_sorted, :id, :name, {include_blank:'TIPO DE CONTRATO'}, {class:'form-control col-sm-5'}) %>
+    <%= f.number_field :employees, placeholder:"NUMERO DE EMPLEADOS", class:'form-control col-sm-7' %>
+    <%= link_to_remove_association f, class: "minibtn btn-default" do %>
+      <span class="fa fa-trash-o"></span>
+    <% end %>
+  </div>
+
+</div>

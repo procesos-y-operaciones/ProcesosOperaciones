@@ -6,6 +6,8 @@ class CreateCharges < ActiveRecord::Migration[5.1]
       t.string  :code
       t.integer :total_employees
 
+      t.belongs_to  :areas, index: true
+
       t.timestamps
     end
   end

@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.string "name"
     t.string "code"
     t.integer "total_employees"
+    t.integer "areas_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["areas_id"], name: "index_charges_on_areas_id"
   end
 
   create_table "cities", force: :cascade do |t|

@@ -4,7 +4,9 @@ class ChargesController < ApplicationController
   # GET /charges
   # GET /charges.json
   def index
-    @charges = Charge.all
+    @search = Charge.get_all_sorted.ransack(params[:q])
+    @charges = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /charges/1
@@ -69,6 +71,6 @@ class ChargesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def charge_params
-      params.fetch(:charge, {})
+      params.require(:charge).permit(:code, :name, contracts_attributes: Contract.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end

@@ -4,16 +4,18 @@
 
 <hr />
 <%= search_form_for @search, url: areas_url, class:"" do |f| %>
-<div class="input-group">
-  <%= f.text_field :code_cont, placeholder: "CÓDIGO", class:"form-control" %>
-  <%= f.text_field :name_cont, placeholder: "NOMBRE", class:"form-control" %>
-  <button type="submit" class="minibtn btn-default">
-    <span class="fa">&#xf002;</span>
-  </button>
-  <%= link_to areas_path, class:"minibtn btn-default" do %>
-    <span class="fa">&#xf021;</span>
-  <% end %>
-</div>
+  <div class="input-group">
+    <%= f.text_field :code_cont, placeholder: "CÓDIGO", class:"col-sm-3 form-control" %>
+    <%= f.text_field :name_cont, placeholder: "NOMBRE", class:"col-sm-9 form-control" %>
+  </div>
+  <div class="col-sm-3 offset-md-9">
+    <button type="submit" class="minibtn btn-default">
+      <span class="fa">&#xf002;</span>
+    </button>
+    <%= link_to areas_path, class:"minibtn btn-default" do %>
+      <span class="fa">&#xf021;</span>
+    <% end %>
+  </div>
 <% end %>
 <hr />
 

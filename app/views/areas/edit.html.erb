@@ -1,5 +1,5 @@
-<h2 class="center second">Editar Área</h2>
+<h2 class="center second"><%= t('general.messages.edit') %> <%= t(@area.class.model_name.human) %></h2>
 
 <%= render 'form', area: @area %>
 
-<%= link_to 'Atrás', areas_path, class:"btn btn-default" %>
+<%= link_to t('general.buttons.back'), areas_path, class:"btn btn-default" %>

@@ -1,5 +1,5 @@
-<h2 class="center second">Crear Cargo</h2>
+<h2 class="center second"><%= t('general.messages.create') %> <%= t(@charge.class.model_name.human) %></h2>
 
 <%= render 'form', charge: @charge %>
 
-<%= link_to 'Atrás', charges_path, class:"btn btn-default" %>
+<%= link_to t('general.buttons.back'), charges_path, class:"btn btn-default" %>

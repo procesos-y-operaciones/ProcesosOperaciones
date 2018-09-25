@@ -1,6 +1,5 @@
-<h1>Editing Departament</h1>
+<h2 class="center second"><%= t('general.messages.edit') %> <%= t(@departament.class.model_name.human) %></h2>
 
 <%= render 'form', departament: @departament %>
 
-<%= link_to 'Show', @departament %> |
-<%= link_to 'Back', departaments_path %>
+<%= link_to t('general.buttons.back'), departaments_path, class:"btn btn-default" %>

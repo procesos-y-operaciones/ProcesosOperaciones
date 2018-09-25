@@ -24,12 +24,12 @@
 
   <%= form.label :area, "Dependencia", class:'form-label' %>
   <div class="input-group">
-    <%= form.collection_select(:areas_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
+    <%= form.collection_select(:area_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
   </div>
 
   <br />
 
   <div class="actions">
-    <%= form.submit 'Guardar', class:"btn btn-default floatRight" %>
+    <%= form.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
   </div>
 <% end %>

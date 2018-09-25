@@ -1,12 +1,12 @@
+<div class="col-sm-6 offset-md-3">
+  <h2 class="center second"><%= t('.sign_in') %></h2>
 
-<h2 class="center second"><%= t('.sign_in') %></h2>
+  <br />
+  <hr />
+  <br />
+  <br />
 
-<br />
-<hr />
-<br />
-<br />
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="input-group">
     <span class="input-group-text"><i class="fa" style="width:22px">&#xf007;</i></span>
@@ -19,16 +19,17 @@
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="input-group">
-      <%= f.check_box :remember_me, class:"m-1" %>
-      <%= f.label :remember_me, class:"form-label" %>
-    </div>
+  <div class="input-group">
+    <%= f.check_box :remember_me, class:"m-1" %>
+    <%= f.label :remember_me, class:"form-label" %>
+  </div>
   <% end %>
 
   <div class="container-center">
     <%= f.submit t('.sign_in'), class:"btn btn-default" %>
   </div>
 
-<% end %>
+  <% end %>
 
-<!--%= render "devise/shared/links" %-->
+  <!--%= render "devise/shared/links" %-->
+</div>

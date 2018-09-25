@@ -1,6 +1,6 @@
 <%= javascript_include_tag "charges" %>
 
-<h2 class="center second">Cargos</h2>
+<h2 class="center second"><%= Charge.model_name.human(:count => 2) %></h2>
 
 <hr />
 <%= search_form_for @search, url: charges_url, class:"" do |f| %>

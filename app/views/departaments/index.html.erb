@@ -1,25 +1,53 @@
-<p id="notice"><%= notice %></p>
+<%= javascript_include_tag "departaments" %>
 
-<h1>Departaments</h1>
+<h2 class="center second"><%= Departament.model_name.human(:count => 2) %></h2>
 
-<table>
-  <thead>
+<hr />
+<%= search_form_for @search, url: departaments_url, class:"" do |f| %>
+  <div class="input-group">
+    <%= f.text_field :code_cont, placeholder: "CÓDIGO", class:"col-sm-3 form-control" %>
+    <%= f.text_field :name_cont, placeholder: "NOMBRE", class:"col-sm-9 form-control" %>
+  </div>
+  <div class="col-sm-3 offset-md-9">
+    <button type="submit" class="minibtn btn-default">
+      <span class="fa">&#xf002;</span>
+    </button>
+    <%= link_to departaments_path, class:"minibtn btn-default" do %>
+      <span class="fa">&#xf021;</span>
+    <% end %>
+  </div>
+<% end %>
+<hr />
+
+<table class="table table-responsive-sm">
+  <thead class="first">
     <tr>
-      <th colspan="3"></th>
+      <th><%= sort_link @search, :code, "Código", {}, :class => 'link' %></th>
+      <th><%= sort_link @search, :name, "Nombre", {}, :class => 'link' %></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @departaments.each do |departament| %>
-      <tr>
-        <td><%= link_to 'Show', departament %></td>
-        <td><%= link_to 'Edit', edit_departament_path(departament) %></td>
-        <td><%= link_to 'Destroy', departament, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="clickable-box">
+        <td class='clickable-row' data-href='<%= edit_departament_path(departament) %>'><%= departament.code %></td>
+        <td class='clickable-row' data-href='<%= edit_departament_path(departament) %>'><%= departament.name %></td>
+        <td><%= link_to departament, method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
       </tr>
     <% end %>
+    <tr class="clickable-box">
+      <td class='clickable-row' data-href='<%= new_departament_path %>'></td>
+      <td class='clickable-row' data-href='<%= new_departament_path %>'>CREAR DEPARTAMENTO</td>
+      <td ><%= link_to new_departament_path do %><i class="fa fa-plus"></i><% end %></td>
+    </tr>
   </tbody>
 </table>
 
-<br>
+<div class="floatRight">
+  <%= will_paginate @departaments, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class:"pagination-lg" %>
+</div>
 
-<%= link_to 'New Departament', new_departament_path %>
+<p class="first">
+  Items <%= @page %>-<%= @departaments.length + @page.to_i - 1 %> de <%= @search.result.length %>
+</p>

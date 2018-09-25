@@ -1,8 +1,13 @@
 es:
   general:
     messages:
+      create: Crear
+      edit: Editar
       delete: ¿Está seguro de borrar este elemento?
       mayus_num: Sólo se pertmiten espacios, letras en mayúsculas y números. (No eñes, guiones, comas, etc...)
+    buttons:
+      back: Atrás
+      submit: Guardar
   devise:
     confirmations:
       confirmed: Tu cuenta ha sido confirmada satisfactoriamente.
@@ -111,6 +116,11 @@ es:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
   activerecord:
+    successful:
+      messages:
+        created: "%{model} fue creado satisfactoriamente."
+        updated: "%{model} fue actualizado satisfactoriamente."
+        deleted: "%{model} fue eliminado satisfactoriamente."
     attributes:
       user:
         document: Documento de Identificación
@@ -138,7 +148,51 @@ es:
         unlock_token: Código de desbloqueo
         updated_at: Fecha de actualización
     models:
-      user: Usuario
+      user:
+        one: Usuario
+        other: Usuarios
+      area:
+        one: Área
+        other: Áreas
+      charge:
+        one: Cargo
+        other: Cargos
+      city:
+        one: Ciudad o Municipio
+        other: Ciudades o Municipios
+      contract_type:
+        one: Tipo de contrato
+        other: Tipo de contratos
+      contract:
+        one: Contrato
+        other: Contratos
+      departament:
+        one: Departamento
+        other: Departamentos
+      generation_range:
+        one: Rango generacional
+        other: Rangos generacionales
+      genre:
+        one: Género
+        other: Géneros
+      goal_type:
+        one: Tipo de Objetivo
+        other: Tipos de Objetivos
+      goal:
+        one: Objetivo
+        other: Objetivos
+      identification_type:
+        one: Tipo de identificación
+        other: Tipos de identificación
+      period:
+        one: Periodo
+        other: Periodos
+      phase:
+        one: Fase
+        other: Fases
+      role:
+        one: Rol
+        other: Roles
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

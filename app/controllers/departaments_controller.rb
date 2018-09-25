@@ -4,7 +4,9 @@ class DepartamentsController < ApplicationController
   # GET /departaments
   # GET /departaments.json
   def index
-    @departaments = Departament.all
+    @search = Departament.get_all_sorted.ransack(params[:q])
+    @departaments = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /departaments/1
@@ -28,7 +30,7 @@ class DepartamentsController < ApplicationController
 
     respond_to do |format|
       if @departament.save
-        format.html { redirect_to @departament, notice: 'Departament was successfully created.' }
+        format.html { redirect_to @departament, notice: t('activerecord.successful.messages.created', :model => @departament.class.model_name.human) }
         format.json { render :show, status: :created, location: @departament }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class DepartamentsController < ApplicationController
   def update
     respond_to do |format|
       if @departament.update(departament_params)
-        format.html { redirect_to @departament, notice: 'Departament was successfully updated.' }
+        format.html { redirect_to @departament, notice: t('activerecord.successful.messages.updated', :model => @departament.class.model_name.human) }
         format.json { render :show, status: :ok, location: @departament }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class DepartamentsController < ApplicationController
   def destroy
     @departament.destroy
     respond_to do |format|
-      format.html { redirect_to departaments_url, notice: 'Departament was successfully destroyed.' }
+      format.html { redirect_to departaments_url, notice: t('activerecord.successful.messages.deleted', :model => @departament.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,8 @@ class DepartamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def departament_params
-      params.fetch(:departament, {})
+      params.require(:departament).permit(
+        :code, :name
+      )
     end
 end

@@ -1,6 +1,6 @@
 <%= javascript_include_tag "areas" %>
 
-<h2 class="center second">Áreas</h2>
+<h2 class="center second"><%= Area.model_name.human(:count => 2) %></h2>
 
 <hr />
 <%= search_form_for @search, url: areas_url, class:"" do |f| %>

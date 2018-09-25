@@ -4,7 +4,9 @@ class ContractTypesController < ApplicationController
   # GET /contract_types
   # GET /contract_types.json
   def index
-    @contract_types = ContractType.all
+    @search = ContractType.get_all_sorted.ransack(params[:q])
+    @contract_types = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /contract_types/1
@@ -28,7 +30,7 @@ class ContractTypesController < ApplicationController
 
     respond_to do |format|
       if @contract_type.save
-        format.html { redirect_to @contract_type, notice: 'Contract type was successfully created.' }
+        format.html { redirect_to @contract_type, notice: t('activerecord.successful.messages.created', :model => @contract_type.class.model_name.human) }
         format.json { render :show, status: :created, location: @contract_type }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class ContractTypesController < ApplicationController
   def update
     respond_to do |format|
       if @contract_type.update(contract_type_params)
-        format.html { redirect_to @contract_type, notice: 'Contract type was successfully updated.' }
+        format.html { redirect_to @contract_type, notice: t('activerecord.successful.messages.updated', :model => @contract_type.class.model_name.human) }
         format.json { render :show, status: :ok, location: @contract_type }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class ContractTypesController < ApplicationController
   def destroy
     @contract_type.destroy
     respond_to do |format|
-      format.html { redirect_to contract_types_url, notice: 'Contract type was successfully destroyed.' }
+      format.html { redirect_to contract_types_url, notice: t('activerecord.successful.messages.deleted', :model => @contract_type.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,8 @@ class ContractTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contract_type_params
-      params.fetch(:contract_type, {})
+      params.fetch(:contract_type).permit(
+        :code, :name
+      )
     end
 end

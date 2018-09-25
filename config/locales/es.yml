@@ -162,7 +162,7 @@ es:
         other: Ciudades o Municipios
       contract_type:
         one: Tipo de contrato
-        other: Tipo de contratos
+        other: Tipos de contrato
       contract:
         one: Contrato
         other: Contratos

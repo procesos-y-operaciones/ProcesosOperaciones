@@ -1,5 +1,5 @@
-<h1>New Genre</h1>
+<h2 class="center second"><%= t('general.messages.create') %> <%= t(@genre.class.model_name.human) %></h2>
 
 <%= render 'form', genre: @genre %>
 
-<%= link_to 'Back', genres_path %>
+<%= link_to t('general.buttons.back'), genres_path, class:"btn btn-default" %>

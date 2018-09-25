@@ -4,7 +4,9 @@ class GenresController < ApplicationController
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.all
+    @search = Genre.get_all_sorted.ransack(params[:q])
+    @genres = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /genres/1
@@ -28,7 +30,7 @@ class GenresController < ApplicationController
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to @genre, notice: 'Genre was successfully created.' }
+        format.html { redirect_to @genre, notice: t('activerecord.successful.messages.created', :model => @genre.class.model_name.human) }
         format.json { render :show, status: :created, location: @genre }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class GenresController < ApplicationController
   def update
     respond_to do |format|
       if @genre.update(genre_params)
-        format.html { redirect_to @genre, notice: 'Genre was successfully updated.' }
+        format.html { redirect_to @genre, notice: t('activerecord.successful.messages.updated', :model => @genre.class.model_name.human) }
         format.json { render :show, status: :ok, location: @genre }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class GenresController < ApplicationController
   def destroy
     @genre.destroy
     respond_to do |format|
-      format.html { redirect_to genres_url, notice: 'Genre was successfully destroyed.' }
+      format.html { redirect_to genres_url, notice: t('activerecord.successful.messages.deleted', :model => @genre.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,8 @@ class GenresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def genre_params
-      params.fetch(:genre, {})
+      params.require(:genre).permit(
+        :code, :name
+      )
     end
 end

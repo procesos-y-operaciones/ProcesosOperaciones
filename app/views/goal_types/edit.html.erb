@@ -1,6 +1,5 @@
-<h1>Editing Goal Type</h1>
+<h2 class="center second"><%= t('general.messages.edit') %> <%= t(@goal_type.class.model_name.human) %></h2>
 
 <%= render 'form', goal_type: @goal_type %>
 
-<%= link_to 'Show', @goal_type %> |
-<%= link_to 'Back', goal_types_path %>
+<%= link_to t('general.buttons.back'), goal_types_path, class:"btn btn-default" %>

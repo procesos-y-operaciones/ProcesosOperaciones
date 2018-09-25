@@ -4,7 +4,9 @@ class GenerationRangesController < ApplicationController
   # GET /generation_ranges
   # GET /generation_ranges.json
   def index
-    @generation_ranges = GenerationRange.all
+    @search = GenerationRange.get_all_sorted.ransack(params[:q])
+    @generation_ranges = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /generation_ranges/1
@@ -28,7 +30,7 @@ class GenerationRangesController < ApplicationController
 
     respond_to do |format|
       if @generation_range.save
-        format.html { redirect_to @generation_range, notice: 'Generation range was successfully created.' }
+        format.html { redirect_to @generation_range, notice: t('activerecord.successful.messages.created', :model => @generation_range.class.model_name.human) }
         format.json { render :show, status: :created, location: @generation_range }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class GenerationRangesController < ApplicationController
   def update
     respond_to do |format|
       if @generation_range.update(generation_range_params)
-        format.html { redirect_to @generation_range, notice: 'Generation range was successfully updated.' }
+        format.html { redirect_to @generation_range, notice: t('activerecord.successful.messages.updated', :model => @generation_range.class.model_name.human) }
         format.json { render :show, status: :ok, location: @generation_range }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class GenerationRangesController < ApplicationController
   def destroy
     @generation_range.destroy
     respond_to do |format|
-      format.html { redirect_to generation_ranges_url, notice: 'Generation range was successfully destroyed.' }
+      format.html { redirect_to generation_ranges_url, notice: t('activerecord.successful.messages.deleted', :model => @generation_range.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,8 @@ class GenerationRangesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def generation_range_params
-      params.fetch(:generation_range, {})
+      params.fetch(:generation_range).permit(
+        :code, :name
+      )
     end
 end

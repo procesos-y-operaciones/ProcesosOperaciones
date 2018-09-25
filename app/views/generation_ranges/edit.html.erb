@@ -1,6 +1,5 @@
-<h1>Editing Generation Range</h1>
+<h2 class="center second"><%= t('general.messages.edit') %> <%= t(@generation_range.class.model_name.human) %></h2>
 
 <%= render 'form', generation_range: @generation_range %>
 
-<%= link_to 'Show', @generation_range %> |
-<%= link_to 'Back', generation_ranges_path %>
+<%= link_to t('general.buttons.back'), generation_ranges_path, class:"btn btn-default" %>

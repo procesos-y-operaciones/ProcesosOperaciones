@@ -4,7 +4,7 @@ class DepartamentsController < ApplicationController
   # GET /departaments
   # GET /departaments.json
   def index
-    @search = Departament.get_all_sorted.ransack(params[:q])
+    @search = Departament.get_name_sorted.ransack(params[:q])
     @departaments = @search.result.paginate(:page => params[:page], :per_page => 10)
     @page = params[:page] || 1
   end

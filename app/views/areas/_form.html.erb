@@ -22,7 +22,7 @@
     <%= form.text_field :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
   </div>
 
-  <%= form.label :area, "Dependencia", class:'form-label' %>
+  <%= form.label :area_id, "Dependencia", class:'form-label' %>
   <div class="input-group">
     <%= form.collection_select(:area_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
   </div>

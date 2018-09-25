@@ -1,6 +1,5 @@
-<h1>Editing City</h1>
+<h2 class="center second"><%= t('general.messages.edit') %> <%= t(@city.class.model_name.human) %></h2>
 
 <%= render 'form', city: @city %>
 
-<%= link_to 'Show', @city %> |
-<%= link_to 'Back', cities_path %>
+<%= link_to t('general.buttons.back'), cities_path, class:"btn btn-default" %>

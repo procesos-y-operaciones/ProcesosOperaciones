@@ -1,5 +1,5 @@
-<h1>New Identification Type</h1>
+<h2 class="center second"><%= t('general.messages.create') %> <%= t(@identification_type.class.model_name.human) %></h2>
 
 <%= render 'form', identification_type: @identification_type %>
 
-<%= link_to 'Back', identification_types_path %>
+<%= link_to t('general.buttons.back'), identification_types_path, class:"btn btn-default" %>

@@ -4,7 +4,9 @@ class IdentificationTypesController < ApplicationController
   # GET /identification_types
   # GET /identification_types.json
   def index
-    @identification_types = IdentificationType.all
+    @search = IdentificationType.get_all_sorted.ransack(params[:q])
+    @identification_types = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /identification_types/1
@@ -28,7 +30,7 @@ class IdentificationTypesController < ApplicationController
 
     respond_to do |format|
       if @identification_type.save
-        format.html { redirect_to @identification_type, notice: 'Identification type was successfully created.' }
+        format.html { redirect_to @identification_type, notice: t('activerecord.successful.messages.created', :model => @identification_type.class.model_name.human) }
         format.json { render :show, status: :created, location: @identification_type }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class IdentificationTypesController < ApplicationController
   def update
     respond_to do |format|
       if @identification_type.update(identification_type_params)
-        format.html { redirect_to @identification_type, notice: 'Identification type was successfully updated.' }
+        format.html { redirect_to @identification_type, notice: t('activerecord.successful.messages.created', :model => @identification_type.class.model_name.human) }
         format.json { render :show, status: :ok, location: @identification_type }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class IdentificationTypesController < ApplicationController
   def destroy
     @identification_type.destroy
     respond_to do |format|
-      format.html { redirect_to identification_types_url, notice: 'Identification type was successfully destroyed.' }
+      format.html { redirect_to identification_types_url, notice: t('activerecord.successful.messages.created', :model => @identification_type.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,8 @@ class IdentificationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def identification_type_params
-      params.fetch(:identification_type, {})
+      params.require(:identification_type).permit(
+        :code, :name
+      )
     end
 end

@@ -5,6 +5,7 @@ es:
       edit: Editar
       delete: ¿Está seguro de borrar este elemento?
       mayus_num: Sólo se pertmiten espacios, letras en mayúsculas y números. (No eñes, guiones, comas, etc...)
+      num: Sólo se permiten números.
     buttons:
       back: Atrás
       submit: Guardar

@@ -13,4 +13,8 @@ class Contract < ApplicationRecord
 
   belongs_to :charge
 
+  def self.get_name_sorted
+    self.order('name ASC')
+  end
+
 end

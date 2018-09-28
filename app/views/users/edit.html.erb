@@ -1,0 +1,5 @@
+<h2 class="center second"><%= t('general.messages.edit') %> <%= t(@user.class.model_name.human) %></h2>
+
+<%= render 'form', user: @user %>
+
+<%= link_to t('general.buttons.back'), users_path, class:"btn btn-default" %>

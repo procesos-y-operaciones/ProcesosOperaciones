@@ -50,4 +50,8 @@ class User < ApplicationRecord
     end
   end
 
+  def self.get_all_sorted
+    self.order('created_at DESC')
+  end
+
 end

@@ -16,4 +16,8 @@ class Area < ApplicationRecord
     self.order('created_at DESC')
   end
 
+  def self.get_name_sorted
+    self.order('name ASC')
+  end
+
 end

@@ -4,7 +4,9 @@ class PeriodsController < ApplicationController
   # GET /periods
   # GET /periods.json
   def index
-    @periods = Period.all
+    @search = Period.get_all_sorted.ransack(params[:q])
+    @periods = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /periods/1
@@ -28,7 +30,7 @@ class PeriodsController < ApplicationController
 
     respond_to do |format|
       if @period.save
-        format.html { redirect_to @period, notice: 'Period was successfully created.' }
+        format.html { redirect_to @period, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
         format.json { render :show, status: :created, location: @period }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class PeriodsController < ApplicationController
   def update
     respond_to do |format|
       if @period.update(period_params)
-        format.html { redirect_to @period, notice: 'Period was successfully updated.' }
+        format.html { redirect_to @period, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
         format.json { render :show, status: :ok, location: @period }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class PeriodsController < ApplicationController
   def destroy
     @period.destroy
     respond_to do |format|
-      format.html { redirect_to periods_url, notice: 'Period was successfully destroyed.' }
+      format.html { redirect_to periods_url, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,8 @@ class PeriodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params
-      params.fetch(:period, {})
+      params.require(:period).permit(
+        :code, :name, :state, :date_beg, :date_end
+      )
     end
 end

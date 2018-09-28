@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   resources :cities
   resources :departaments
 
-  get 'admin/manage'
-
   devise_for :users, :controllers => { registrations: 'registrations' }
+
+  get "admin/manage"
+  get "users" => "users#index", as:'users'
+  get "users/edit/:id" => "users#edit", as:'edit_user'
+  get "users/new" => "users#new", as:'new_user'
 
   root to: "home#index"
 

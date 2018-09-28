@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   resources :generation_ranges
   resources :genres
   resources :roles
@@ -14,13 +16,11 @@ Rails.application.routes.draw do
   resources :identification_types
   resources :cities
   resources :departaments
+  resources :users
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  get "cities_list/:state", to: "application#cities"
 
   get "admin/manage"
-  get "users" => "users#index", as:'users'
-  get "users/edit/:id" => "users#edit", as:'edit_user'
-  get "users/new" => "users#new", as:'new_user'
 
   root to: "home#index"
 

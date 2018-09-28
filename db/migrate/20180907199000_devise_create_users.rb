@@ -25,7 +25,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       #Dependences
       t.belongs_to  :identification_type, index: true
       t.belongs_to  :departament, index: true
-      t.belongs_to  :citie, index: true
+      t.belongs_to  :city, index: true
       t.belongs_to  :area, index: true
       t.belongs_to  :charge, index: true
       t.belongs_to  :genre, index: true

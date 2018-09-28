@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.boolean "terms", default: false
     t.integer "identification_type_id"
     t.integer "departament_id"
-    t.integer "citie_id"
+    t.integer "city_id"
     t.integer "area_id"
     t.integer "charge_id"
     t.integer "genre_id"
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_users_on_area_id"
     t.index ["charge_id"], name: "index_users_on_charge_id"
-    t.index ["citie_id"], name: "index_users_on_citie_id"
+    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["departament_id"], name: "index_users_on_departament_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["generation_range_id"], name: "index_users_on_generation_range_id"

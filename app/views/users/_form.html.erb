@@ -1,3 +1,5 @@
+<%= javascript_include_tag "users" %>
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -56,8 +58,13 @@
       <%= form.label :first_lastname, "Ciudad o Municipio", class:'form-label' %>
     </div>
     <div class="col-sm-5">
+      <%= form.collection_select(:departament_id, Departament.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {id:'departament', required:true, class:'form-control'}) %>
     </div>
     <div class="offset-sm-1 col-sm-5">
+      <select name="user[city_id]" id="cities" required="true" class="form-control">
+        <option value="">SELECCIONE</option>
+        <option value="<%= user.city_id %>"></option>
+      </select>
     </div>
     <div class="col-sm-5">
     </div>

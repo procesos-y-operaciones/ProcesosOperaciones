@@ -8,11 +8,9 @@ $ ->
       $('#cities').empty()
       $('#cities').append '<option value="">SELECCIONE</option>'
       $.each data, (i) ->
-        if value == data[i].code
-          console.log (data[i].id + ", " + value + " SAME")
+        if parseInt(value) == parseInt(data[i].id)
           opt = '<option selected="selected" value="' + data[i].id + '">' + data[i].name + '</option>'
         else
-          console.log (data[i].id + ", " + value + " DIFF")
           opt = '<option value="' + data[i].id + '">' + data[i].name + '</option>'
         $('#cities').append(opt)
 

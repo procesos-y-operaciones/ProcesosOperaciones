@@ -7,6 +7,34 @@ class AreasController < ApplicationController
     @search = Area.get_all_sorted.ransack(params[:q])
     @areas = @search.result.paginate(:page => params[:page], :per_page => 10)
     @page = params[:page] || 1
+
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Name'   )
+    data_table.new_column('string', 'Manager')
+    data_table.new_column('string', 'ToolTip')
+    data_table.add_rows(
+      [
+        [ {:v => 'Mike', :f => 'Mike<div style="color:red; font-style:italic">President</div>'   }, ''    , 'The President' ],
+        [ {:v => 'Jim' , :f => 'Jim<div style="color:red; font-style:italic">Vice President<div>'}, 'Mike', 'VP'            ],
+        [ 'Alice'  , 'Mike', ''           ],
+        [ 'Bob'    , 'Jim' , 'Bob Sponge' ],
+        [ 'Carol'  , 'Bob' , ''           ]
+      ]
+    )
+
+    opts   = { width: 1000, height: 240, allowHtml: true }
+    @chart = GoogleVisualr::Interactive::OrgChart.new(data_table, opts)
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "structure",
+        layout: 'pdf',
+        orientation: 'Landscape',
+        javascript_delay: 5000,
+        page_size: 'Letter'
+      end
+    end
   end
 
   # GET /areas/1

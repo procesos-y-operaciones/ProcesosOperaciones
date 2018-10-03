@@ -54,6 +54,10 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 # Cocoon
 gem 'cocoon'
+# Pdf generator
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'google_visualr', '~> 2.5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,73 @@
+
+$main: #DFE3EC
+$first: #E98F05
+$second: #01518C
+$third: #DFE3EC
+$white: #fff
+$darkgrey: #555555
+$grey: #cccccc
+$black: #000
+
+.main
+  color: darken($main, 2.5%)
+.first
+  color: darken($first, 2.5%)
+.second
+  color: darken($second, 2.5%)
+.third
+  color: darken($third, 2.5%)
+.grey
+    color: darken($white, 2.5%)
+.white
+    color: darken($grey, 2.5%)
+.black
+    color: darken($black, 2.5%)
+.hw
+    width: 50%
+.fw
+    width: 100%
+.shadow
+    box-shadow: 0 0 20px darken($grey, 2.5%)
+
+thead tr th
+    color: darken($first, 2.5%)
+
+/* BODY */
+html, body
+  font-family: 'Open Sans', 'Josefin Slab', 'Arvo', 'Lato'
+  font-style: normal
+  font-variant: normal
+  font-weight: 400
+  line-height: 20px
+
+h1, h2, h3, h4, h5, h6, p, th, ol, li, label, select, input
+  font-family: 'Open Sans', 'Josefin Slab', 'Arvo', 'Lato'
+  font-style: normal
+  font-variant: normal
+  font-weight: 400
+  line-height: 25px
+
+/* ALIGN */
+.left
+    text-align: left
+.center
+    text-align: center
+.right
+    text-align: right
+.justify
+    text-align: justify
+.floatRight
+    float: right
+
+ul
+  list-style-type: none
+  margin: 0
+  padding: 0
+  overflow: hidden
+  background-color: $main
+
+li
+  float: left
+  a
+    display: block
+    padding: 8px

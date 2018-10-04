@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   resources :departaments
   resources :users
 
-  get "cities_list/:state", to: "application#cities"
-
+  get "areas/structure/:id", to: "areas#structure"
   get "admin/manage"
+
+  get "cities_list/:state", to: "application#cities"
 
   root to: "home#index"
 

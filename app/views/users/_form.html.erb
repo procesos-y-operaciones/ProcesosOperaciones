@@ -14,81 +14,91 @@
 
   <br />
 
-  <div class="input-group">
+  <div class="row p-4">
     <div class="col-sm-5">
       <%= form.label :document, "Tipo de Documento", class:'form-label' %>
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-      <%= form.label :document, "Documento", class:'form-label' %>
-    </div>
-    <div class="col-sm-5">
       <%= form.collection_select(:identification_type_id, IdentificationType.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {class:'form-control'}) %>
     </div>
+
     <div class="offset-sm-1 col-sm-5">
+      <%= form.label :document, "Documento", class:'form-label' %>
       <%= form.number_field :document, required:true, placeholder:'NÚMERO COMPLETO', title:t('general.messages.num'), class:'form-control' %>
     </div>
+
     <div class="col-sm-5">
       <%= form.label :first_name, "Primer Nombre", class:'form-label' %>
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-      <%= form.label :second_name, "Segundo Nombre", class:'form-label' %>
-    </div>
-    <div class="col-sm-5">
       <%= form.text_field :first_name, required:true, placeholder:'NOMBRE COMPLETO', title:t('general.messages.mayus_num'), class:'form-control' %>
     </div>
+
     <div class="offset-sm-1 col-sm-5">
+      <%= form.label :second_name, "Segundo Nombre", class:'form-label' %>
       <%= form.text_field :second_name, required:true, placeholder:'NOMBRE COMPLETO', title:t('general.messages.mayus_num'), class:'form-control' %>
     </div>
+
     <div class="col-sm-5">
       <%= form.label :first_lastname, "Primer Apellido", class:'form-label' %>
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-      <%= form.label :first_lastname, "Segundo Apellido", class:'form-label' %>
-    </div>
-    <div class="col-sm-5">
       <%= form.text_field :first_lastname, required:true, placeholder:'APELLIDO COMPLETO', title:t('general.messages.mayus_num'), class:'form-control' %>
     </div>
+
     <div class="offset-sm-1 col-sm-5">
+      <%= form.label :second_lastname, "Segundo Apellido", class:'form-label' %>
       <%= form.text_field :second_lastname, required:true, placeholder:'APELLIDO COMPLETO', title:t('general.messages.mayus_num'), class:'form-control' %>
     </div>
+
     <div class="col-sm-5">
       <%= form.label :first_lastname, "Departamento", class:'form-label' %>
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-      <%= form.label :first_lastname, "Ciudad o Municipio", class:'form-label' %>
-    </div>
-    <div class="col-sm-5">
       <%= form.collection_select(:departament_id, Departament.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {id:'departament', required:true, class:'form-control'}) %>
     </div>
     <div class="offset-sm-1 col-sm-5">
+      <%= form.label :first_lastname, "Ciudad o Municipio", class:'form-label' %>
       <select name="user[city_id]" id="cities" required="true" class="form-control">
         <option value="<%= user.city_id %>">SELECCIONE</option>
       </select>
     </div>
+
     <div class="col-sm-5">
+      <%= form.label :born_date, "Fecha de Nacimineto", class:'form-label' %>
+      <%= form.date_field :born_date, id:'born_date', max:Date.today, class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :age, "Edad", class:'form-label' %>
+      <%= form.number_field :age, id:'age', readOnly:true, class:'form-control' %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :genre_id, "Género", class:'form-label' %>
+      <%= form.collection_select(:genre_id, Genre.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :generation_range_id, "Rango Generacional", class:'form-label' %>
+      <%= form.collection_select(:generation_range_id, GenerationRange.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :corporative_mail, "Correo corporativo", class:'form-label' %>
+      <%= form.text_field :corporative_mail, pattern:'[^@]+@[^@]+\.[a-zA-Z]{2,}', title:'Debe ser un correo válido.', class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :personal_mail, "Correo personal", class:'form-label' %>
+      <%= form.text_field :personal_mail, pattern:'[^@]+@[^@]+\.[a-zA-Z]{2,}', title:'Debe ser un correo válido.', class:'form-control' %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :telephone, "Teléfono", class:'form-label' %>
+      <%= form.text_field :telephone, pattern:'[0-9]{7}', maxLength:'7', title:'Debe ser un número de 7 dígitos', class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :celphone, "Celular", class:'form-label' %>
+      <%= form.text_field :celphone, pattern:'[0-9]{10}', maxLength:'10', title:'Debe ser un número de 10 dígitos', class:'form-control' %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :address, "Dirección", class:'form-label' %>
+      <%= form.text_field :address, maxLength:50, class:'form-control' %>
     </div>
     <div class="offset-sm-1 col-sm-5">
     </div>
-    <div class="col-sm-5">
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-    </div>
-    <div class="col-sm-5">
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-    </div>
-    <div class="col-sm-5">
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-    </div>
-    <div class="col-sm-5">
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-    </div>
-    <div class="col-sm-5">
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-    </div>
+
   </div>
 
   <br />

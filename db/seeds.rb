@@ -1199,9 +1199,9 @@ GoalType.create([
 ])
 
 Genre.create([
-    {name: 'FEMENINO', code: '01'},
-    {name: 'MASCULINO', code: '02'},
-    {name: 'OTRO', code: '03'}
+    {name: 'FEMENINO', code: '01', alias: 'SEÑORA'},
+    {name: 'MASCULINO', code: '02', alias: 'SEÑOR'},
+    {name: 'OTRO', code: '03', alias: 'SEÑXR'}
 ])
 
 GenerationRange.create([

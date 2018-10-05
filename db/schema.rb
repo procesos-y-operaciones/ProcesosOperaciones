@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.string "code"
+    t.string "alias"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.string "first_lastname"
     t.string "second_lastname"
     t.date "born_date"
+    t.integer "age"
     t.string "personal_mail"
     t.string "corporative_mail"
     t.string "telephone"

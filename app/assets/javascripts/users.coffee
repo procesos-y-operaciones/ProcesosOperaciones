@@ -18,3 +18,15 @@ $ ->
     departament_rule()
 
   departament_rule()
+
+  age_rule = ->
+    date1 = new Date( $('#born_date').val() )
+    date2 = new Date()
+    timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    diffYear = Math.ceil(timeDiff / (365 * 24 * 60 * 60 * 1000));
+    $('#age').val( diffYear - 1)
+
+  $('#born_date').change ->
+    age_rule()
+
+  age_rule()

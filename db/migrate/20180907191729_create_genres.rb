@@ -4,6 +4,7 @@ class CreateGenres < ActiveRecord::Migration[5.1]
 
       t.string  :name
       t.string  :code
+      t.string  :alias
 
       t.timestamps
     end

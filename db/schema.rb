@@ -145,6 +145,8 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.string "telephone"
     t.string "celphone"
     t.string "address"
+    t.integer "evaluation_role", default: 3
+    t.integer "step", default: 1
     t.boolean "terms", default: false
     t.integer "identification_type_id"
     t.integer "departament_id"

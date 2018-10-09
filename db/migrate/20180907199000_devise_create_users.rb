@@ -20,6 +20,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string  :telephone
       t.string  :celphone
       t.string  :address
+      t.integer :evaluation_role, default: 3
+      t.integer :step, default: 1
       t.boolean :terms, default: false
 
       #Dependences

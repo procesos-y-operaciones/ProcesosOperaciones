@@ -38,6 +38,17 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_url, notice: t('activerecord.successful.messages.deleted', :model => @user.class.model_name.human)
   end
+  
+  def evaluation
+    @evaluation = current_user.evaluation_role
+  end
+  
+  def evaluator
+  end
+  
+  def evaluate
+    @step =  current_user.step
+  end
 
   private
 

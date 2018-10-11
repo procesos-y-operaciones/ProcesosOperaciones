@@ -13,4 +13,19 @@
 #
 
 class Goal < ApplicationRecord
+
+  has_many :phases
+
+  def self.get_all_sorted
+    self.order('created_at DESC')
+  end
+  
+  def self.get_name_sorted
+    self.order('name ASC')
+  end
+
+  def self.get_by_type(type)
+    self.where(goal_type_id: type)
+  end
+
 end

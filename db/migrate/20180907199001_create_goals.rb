@@ -3,6 +3,8 @@ class CreateGoals < ActiveRecord::Migration[5.1]
     create_table :goals do |t|
 
       t.integer   :phases_number
+      t.integer   :percentaje
+      t.string    :name
       t.string    :comment
 
       t.belongs_to  :period, index: true

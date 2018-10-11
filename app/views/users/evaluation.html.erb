@@ -2,12 +2,12 @@
 <br />
 <br />
 <div class="offset-sm-3 col-sm-6">
-    <% if @evaluation & 1 %>
+    <% if @evaluation & 1 > 0 %>
         <%= link_to "Ser Evaluado", evaluate_user_path, class:"btn btn-grad mb-2 fw" %>
         <br />
     <% end %>
 
-    <% if @evaluation & 2 %>
+    <% if @evaluation & 2 > 0 %>
         <%= link_to "Ser Evaluador", evaluator_user_path, class:"btn btn-grad mb-2 fw" %>
         <br />
     <% end %>

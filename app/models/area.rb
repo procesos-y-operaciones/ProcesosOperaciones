@@ -43,4 +43,8 @@ class Area < ApplicationRecord
     [self.name, Area.get_name(self.area_id), Area.get_info(self.id)]
   end
 
+  def get_bosses
+    self.users.order('first_lastname ASC')
+  end
+
 end

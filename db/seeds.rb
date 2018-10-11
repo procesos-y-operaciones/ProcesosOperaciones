@@ -1216,6 +1216,13 @@ Role.create([
 ])
 
 User.create([
-    {document: 1032459412, first_name: 'JONATHAN', first_lastname: 'GRANADOS', email: 'jonathan@gmail.com', password: 'Jon123', password_confirmation: 'Jon123', role_id: 1},
-    {document: 1234567890, first_name: 'USUARIO', first_lastname: 'TESTEO', email: 'test@gmail.com', password: 'Test123', password_confirmation: 'Test123', role_id: 2},
+    {
+      document: 1032459412, first_name: 'JONATHAN', first_lastname: 'GRANADOS', email: 'jonathan@gmail.com', password: 'Jon123', password_confirmation: 'Jon123', role_id: 1,
+    },{
+      document: 1234567890, first_name: 'EVALUADOR', first_lastname: 'TESTEO', email: 'evaluador@gmail.com', password: 'Eval123', password_confirmation: 'Eval123', role_id: 2,
+      telephone: 1234, celphone: 1234, address: 'CRA 66', evaluation_role: 3, identification_type_id: 1, area_id: 1, charge_id: 1, genre_id: 1, generation_range_id: 1,
+    },{
+      document: 1234567890, first_name: 'EVALUADO', first_lastname: 'TESTEO', email: 'evaluado@gmail.com', password: 'Eval123', password_confirmation: 'Eval123', role_id: 2,
+      telephone: 1234, celphone: 1234, address: 'CRA 66', evaluation_role: 1, identification_type_id: 1, area_id: 2, charge_id: 1, genre_id: 1, generation_range_id: 1,
+    },
 ])

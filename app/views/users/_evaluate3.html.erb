@@ -1,0 +1,43 @@
+<%= javascript_include_tag "users" %>
+
+<h2 class="center second">Creación de Objetivos</h2>
+<h3 class="center second">Paso 3</h3>
+<br />
+
+<table class="table table-responsive-sm">
+  <thead class="first">
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo</th>
+      <th></th>
+      <th>Porcentaje</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @users == nil %>
+    <tr class="clickable-box">
+      <td class='clickable-row' data-href='<%= new_goal_path %>'>NO TIENES NINGÚN OBJETIVO</td>
+      <td></td>
+      <td class='clickable-row' data-href='<%= new_goal_path %>'>CREAR OBJETIVO</td>
+      <td ><%= link_to new_goal_path do %><i class="fa fa-plus"></i><% end %></td>
+    </tr>
+  <% else %>
+    <% @types.each do |t| %>
+      <% current_user.goals.get_by_type(t).each do |g| %>
+        <tr class="clickable-box">
+          <td class='clickable-row' data-href='<%= edit_goal_path(user) %>'><%= g.name %></td>
+          <td class='clickable-row' data-href='<%= edit_goal_path(user) %>'><%= g.goal_type_id %></td>
+          <td class='clickable-row' data-href='<%= edit_goal_path(user) %>'><%= g.percentaje %>%</td>
+          <td><%= link_to goals_path(g), method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
+        </tr>
+      <% end %>      
+    <% end %>
+    <tr class="clickable-box">
+      <td class='clickable-row' data-href='<%= new_goal_path %>'>AÑADIR OBJETIVO</td>
+      <td></td>
+      <td></td>
+      <td ><%= link_to new_goal_path do %><i class="fa fa-plus"></i><% end %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,8 @@
+<input type="hidden" id="user_id" value="<%= current_user.id %>">
 <% if @step == 1 %>
   <%= render 'evaluate1' %>
 <% elsif @step == 2 %>
   <%= render 'evaluate2' %>
+<% elsif @step == 3 %>
+  <%= render 'evaluate3' %>
 <% end %>

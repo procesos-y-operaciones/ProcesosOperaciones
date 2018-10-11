@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20180907199001) do
 
   create_table "goals", force: :cascade do |t|
     t.integer "phases_number"
+    t.integer "percentaje"
+    t.string "name"
     t.string "comment"
     t.integer "period_id"
     t.integer "goal_type_id"

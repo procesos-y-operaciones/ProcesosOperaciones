@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "admin/manage"
 
   get "cities_list/:state", to: "application#cities"
+  get "step/:user", to: "application#step"
 
   root to: "home#index"
 

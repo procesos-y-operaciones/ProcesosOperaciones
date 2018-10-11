@@ -1,8 +1,9 @@
+<%= javascript_include_tag "users" %>
+
 <%= form_with(model: goal, local: true) do |form| %>
   <% if goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
-
       <ul>
       <% goal.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,7 +12,40 @@
     </div>
   <% end %>
 
+  <br />
+
+  <div class="row p-4">
+
+    <div class="col-sm-5">
+      <%= form.label :goal_type_id, "Tipo de Objetivo", class:'form-label' %>
+      <%= form.collection_select(:goal_type_id, GoalType.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :period_id, "Período", class:'form-label' %>
+      <%= form.collection_select(:period_id, Period.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :name, "Nombre del Objetivo", class:'form-label' %>
+      <%= form.text_field :name, required:true, pattern:'[A-Z0-9]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :percentaje, "Porcentaje", class:'form-label' %>
+      <%= form.number_field :percentaje, required:true, max:100, min:1, title:t('general.messages.num'), class:'form-control' %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :phases_number, "Número de Fases", class:'form-label' %>
+      <%= form.select :phases_number, options_for_select([["SELECCIONE", 0], ["ANUAL", 1], ["SEMESTRAL", 2], ["TRIMESTRAL", 4], ["BIMESTRAL", 6], ["MENSUAL", 12]], goal.phases_number), {}, {id:'phases', class:"form-control"} %>
+    </div>
+
+    
+
+  </div>
+
+  <br />
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
   </div>
 <% end %>

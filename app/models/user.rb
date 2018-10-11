@@ -65,14 +65,20 @@ class User < ApplicationRecord
     self.users.where(step: 2)
   end
 
+  def get_goals
+    self.goals.order('goal_type_id ASC')
+  end
+
   def get_bosses
     if Area.exists?(self.area_id)
       high_area = Area.find(self.area_id)
       if Area.exists?(high_area.area_id)
-        Area.find(high_area.area_id).users
+        Area.find(high_area.area_id).get_bosses
       else
         []
       end
+    else
+      []
     end
   end
 

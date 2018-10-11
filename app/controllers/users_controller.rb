@@ -28,9 +28,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
+      redirect_to users_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
     else
-      render :evaluate
+      render :edit
     end
   end
 
@@ -66,6 +66,8 @@ class UsersController < ApplicationController
 
   def evaluate
     @step = current_user.step
+    @goals = current_user.goals
+    @types = GoalType.get_name_sorted
   end
 
   def accept

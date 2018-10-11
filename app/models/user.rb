@@ -46,6 +46,10 @@ class User < ApplicationRecord
   has_many :goals
   has_many :users
 
+  def full_name
+    "#{self.first_name} #{self.second_name} #{self.first_lastname} #{self.second_lastname}"
+  end
+
   def get_role_name
     case self.role
     when 1
@@ -55,6 +59,10 @@ class User < ApplicationRecord
     else
       "NO ASIGNADO"
     end
+  end
+
+  def get_evaluates
+    self.users.where(step: 2)
   end
 
   def get_bosses

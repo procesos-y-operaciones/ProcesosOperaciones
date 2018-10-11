@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :update_step, :destroy]
 
   def index
     @search = User.get_all_sorted.ransack(params[:q])
@@ -28,7 +28,25 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to users_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
+      redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
+    else
+      render :evaluate
+    end
+  end
+
+  def update_step
+    if @user.update(user_params)
+      case @user.step
+      when 1
+        redirect_to accept_user_path, notice: 'Usuario rechazado'
+      when 2
+        redirect_to evaluate_user_path, notice: 'Jefe seleccionado correctamente'
+      when 3
+        redirect_to accept_user_path, notice: 'Usuario aceptado'
+      else
+        redirect_to root_path, notice: "TODO"
+      end
+
     else
       render :edit
     end
@@ -47,7 +65,11 @@ class UsersController < ApplicationController
   end
 
   def evaluate
-    @step =  current_user.step
+    @step = current_user.step
+  end
+
+  def accept
+    @users = current_user.get_evaluates
   end
 
   private
@@ -62,7 +84,8 @@ class UsersController < ApplicationController
         :first_lastname, :second_lastname, :born_date, :personal_mail, :corporative_mail,
         :telephone, :celphone, :address, :terms, :identification_type_id, :departament_id,
         :city_id, :area_id, :charge_id, :genre_id, :generation_range_id, :role_id, :email,
-        :password, :password_confirmation, :current_password
+        :password, :password_confirmation, :current_password, :evaluation_role, :step, :age,
+        :user_id,
       )
     end
 

@@ -111,11 +111,15 @@
     </div>
 
     <div class="col-sm-5">
+      <%= form.label :role_id, "Rol Apliación", class:'form-label' %>
+      <%= form.collection_select(:role_id, Role.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
       <%= form.label :evaluation_role, "Rol Evaluación Desempeño", class:'form-label' %>
-      <%= form.select :evaluation_role, options_for_select([["SELECCIONE", nil], ["EVALUADO", 1], ["EVALUADOR", 2], ["EVALUADO / EVALUADOR", 3]]), {}, {class:"form-control"} %>
+      <%= form.select :evaluation_role, options_for_select([["SELECCIONE", nil], ["EVALUADO", 1], ["EVALUADOR", 2], ["EVALUADO / EVALUADOR", 3]], user.evaluation_role), {}, {class:"form-control"} %>
     </div>
 
-
+    <hr />
 
   </div>
 

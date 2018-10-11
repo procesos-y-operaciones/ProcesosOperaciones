@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "users/evaluation", :to => 'users#evaluation', :as => 'evaluation_user'
   get "users/evaluator", :to => "users#evaluator", :as => "evaluator_user"
   get "users/evaluate", :to => "users#evaluate", :as => "evaluate_user"
+  get "users/accept", :to => "users#accept", :as => "accept_user"
+  patch "users/update_step/:id", :to => "users#update_step", :as => "update_step_user"
   resources :users
 
   resources :generation_ranges

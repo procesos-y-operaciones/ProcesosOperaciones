@@ -3,8 +3,9 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def update_resource(resource, params)
-    return super if params["password"]&.present? # Require current password if user is trying to change password.
-    resource.update_without_password(params.except("current_password")) # Allows user to update registration information without password.
+    resource.update_without_password(params)
+    #return super if params["password"]&.present? # Require current password if user is trying to change password.
+    #resource.update_without_password(params.except("current_password")) # Allows user to update registration information without password.
   end
 
   def sign_up_params

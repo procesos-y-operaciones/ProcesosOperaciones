@@ -75,8 +75,8 @@
     </div>
 
     <div class="col-sm-5">
-      <%= form.label :corporative_mail, "Correo corporativo", class:'form-label' %>
-      <%= form.text_field :corporative_mail, pattern:'[^@]+@[^@]+\.[a-zA-Z]{2,}', title:'Debe ser un correo válido.', class:'form-control' %>
+      <%= form.label :email, "Correo corporativo", class:'form-label' %>
+      <%= form.text_field :email, pattern:'[^@]+@[^@]+\.[a-zA-Z]{2,}', title:'Debe ser un correo válido.', class:'form-control' %>
     </div>
     <div class="offset-sm-1 col-sm-5">
       <%= form.label :personal_mail, "Correo personal", class:'form-label' %>
@@ -98,6 +98,24 @@
     </div>
     <div class="offset-sm-1 col-sm-5">
     </div>
+
+    <hr />
+
+    <div class="col-sm-5">
+      <%= form.label :area_id, "Área", class:'form-label' %>
+      <%= form.collection_select(:area_id, Area.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :charge_id, "Cargo", class:'form-label' %>
+      <%= form.collection_select(:charge_id, Charge.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :evaluation_role, "Rol Evaluación Desempeño", class:'form-label' %>
+      <%= form.select :evaluation_role, options_for_select([["SELECCIONE", nil], ["EVALUADO", 1], ["EVALUADOR", 2], ["EVALUADO / EVALUADOR", 3]]), {}, {class:"form-control"} %>
+    </div>
+
+
 
   </div>
 

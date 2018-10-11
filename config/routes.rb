@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations' }, :path_prefix => 'my'
+  get "users/evaluation", :to => 'users#evaluation', :as => 'evaluation_user'
+  get "users/evaluator", :to => "users#evaluator", :as => "evaluator_user"
+  get "users/evaluate", :to => "users#evaluate", :as => "evaluate_user"
+  resources :users
 
   resources :generation_ranges
   resources :genres
@@ -16,7 +20,6 @@ Rails.application.routes.draw do
   resources :identification_types
   resources :cities
   resources :departaments
-  resources :users
 
   get "areas/structure/:id", to: "areas#structure"
   get "admin/manage"

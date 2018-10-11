@@ -6,7 +6,7 @@
 #  name            :string
 #  code            :string
 #  total_employees :integer
-#  areas_id        :integer
+#  area_id         :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

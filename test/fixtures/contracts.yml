@@ -2,11 +2,12 @@
 #
 # Table name: contracts
 #
-#  id                :integer          not null, primary key
-#  employees         :integer
-#  contract_types_id :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  id               :integer          not null, primary key
+#  employees        :integer
+#  contract_type_id :integer
+#  charge_id        :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

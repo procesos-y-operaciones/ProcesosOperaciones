@@ -1,0 +1,14 @@
+<h2 class="center second">Evaluación de Desempeño</h2>
+<br />
+<br />
+<div class="offset-sm-3 col-sm-6">
+    <% if @evaluation & 1 %>
+        <%= link_to "Ser Evaluado", evaluate_user_path, class:"btn btn-grad mb-2 fw" %>
+        <br />
+    <% end %>
+
+    <% if @evaluation & 2 %>
+        <%= link_to "Ser Evaluador", evaluate_user_path, class:"btn btn-grad mb-2 fw" %>
+        <br />
+    <% end %>
+</div>

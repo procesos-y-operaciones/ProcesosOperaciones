@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  code       :string
-#  areas_id   :integer
+#  area_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,6 +13,7 @@
 class Area < ApplicationRecord
 
   has_many :areas
+  has_many :users
 
   def self.get_all_sorted
     self.order('created_at DESC')

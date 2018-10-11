@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @users.save
+    if @user.save
       redirect_to users_path, notice: t('activerecord.successful.messages.created', :model => @user.class.model_name.human)
     else
       render :new
@@ -37,6 +37,17 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_url, notice: t('activerecord.successful.messages.deleted', :model => @user.class.model_name.human)
+  end
+
+  def evaluation
+    @evaluation = current_user.evaluation_role
+  end
+
+  def evaluator
+  end
+
+  def evaluate
+    @step =  current_user.step
   end
 
   private

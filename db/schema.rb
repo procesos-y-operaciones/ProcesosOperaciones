@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.string "telephone"
     t.string "celphone"
     t.string "address"
+    t.integer "evaluation_role", default: 3
+    t.integer "step", default: 1
     t.boolean "terms", default: false
     t.integer "identification_type_id"
     t.integer "departament_id"
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.integer "genre_id"
     t.integer "generation_range_id"
     t.integer "role_id"
+    t.integer "user_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -173,6 +176,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.index ["identification_type_id"], name: "index_users_on_identification_type_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
+    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
 end

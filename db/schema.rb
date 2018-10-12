@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "evaluations", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "formula"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "generation_ranges", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -82,7 +90,6 @@ ActiveRecord::Schema.define(version: 20180907199001) do
   create_table "goal_types", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.string "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,8 +102,10 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.integer "period_id"
     t.integer "goal_type_id"
     t.integer "user_id"
+    t.integer "evaluation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["evaluation_id"], name: "index_goals_on_evaluation_id"
     t.index ["goal_type_id"], name: "index_goals_on_goal_type_id"
     t.index ["period_id"], name: "index_goals_on_period_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
@@ -123,8 +132,10 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.integer "proposed"
     t.integer "reached"
     t.string "compromise"
+    t.integer "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_phases_on_goal_id"
   end
 
   create_table "roles", force: :cascade do |t|

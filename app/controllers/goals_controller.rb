@@ -25,7 +25,7 @@ class GoalsController < ApplicationController
   # POST /goals.json
   def create
     @goal = Goal.new(goal_params)
-
+    @goal.user_id = current_user.id
     respond_to do |format|
       if @goal.save
         format.html { redirect_to goals_path, notice: t('activerecord.successful.messages.created', :model => @goal.class.model_name.human) }
@@ -69,6 +69,9 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.fetch(:goal, {})
+      params.require(:goal).permit(
+        :phases_number, :percentaje, :name, :comment, :period_id, :goal_type_id,
+        :user_id, :evaluation_id, phases_attributes: Phase.attribute_names.map(&:to_sym).push(:_destroy),
+      )
     end
 end

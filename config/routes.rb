@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :evaluations
   devise_for :users, :controllers => { registrations: 'registrations' }, :path_prefix => 'my'
   get "users/evaluation", :to => 'users#evaluation', :as => 'evaluation_user'
   get "users/evaluator", :to => "users#evaluator", :as => "evaluator_user"

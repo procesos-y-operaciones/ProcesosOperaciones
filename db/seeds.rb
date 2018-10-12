@@ -1215,6 +1215,11 @@ Role.create([
     {name: 'USUARIO', code: '02'}
 ])
 
+Evaluation.create([
+    {name: 'ASCENDIENTE', code: '01', formula: 'p / a'},
+    {name: 'DESCENDIENTE', code: '02', formula: 'a / p'},
+])
+
 User.create([
     {
       document: 1032459412, first_name: 'JONATHAN', first_lastname: 'GRANADOS', email: 'jonathan@gmail.com', password: 'Jon123', password_confirmation: 'Jon123', role_id: 1,

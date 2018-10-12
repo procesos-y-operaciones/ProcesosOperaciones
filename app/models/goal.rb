@@ -15,11 +15,12 @@
 class Goal < ApplicationRecord
 
   has_many :phases
+  accepts_nested_attributes_for :phases, reject_if: :all_blank, allow_destroy: true
 
   def self.get_all_sorted
     self.order('created_at DESC')
   end
-  
+
   def self.get_name_sorted
     self.order('name ASC')
   end

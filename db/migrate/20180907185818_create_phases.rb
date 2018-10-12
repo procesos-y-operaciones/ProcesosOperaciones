@@ -6,6 +6,8 @@ class CreatePhases < ActiveRecord::Migration[5.1]
       t.integer   :reached
       t.string    :compromise
 
+      t.belongs_to  :goal, index: true
+
       t.timestamps
     end
   end

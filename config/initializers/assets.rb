@@ -14,6 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( fonts.css.erb )
 Rails.application.config.assets.precompile += %w( pdf.sass )
+Rails.application.config.assets.precompile += %w( application.sass )
 
 Rails.application.config.assets.precompile += %w( areas.js.coffee )
 Rails.application.config.assets.precompile += %w( charges.js.coffee )

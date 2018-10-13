@@ -1,49 +1,56 @@
-<%= form_with(model: charge, local: true) do |form| %>
-  <% if charge.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(charge.errors.count, "error") %> prohibited this charge from being saved:</h2>
-      <ul>
-      <% charge.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="col-sm-8 offset-md-2">
+  <%= form_with(model: charge, local: true) do |form| %>
+    <% if charge.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(charge.errors.count, "error") %> prohibited this charge from being saved:</h2>
+        <ul>
+        <% charge.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <br />
+
+    <%= form.label :code, "Código", class:'form-label' %>
+    <div class="input-group">
+      <%= form.text_field :code, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+
+    <%= form.label :name, "Nombre", class:'form-label' %>
+    <div class="input-group">
+      <%= form.text_field :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+
+    <%= form.label :area, "Dependencia", class:'form-label' %>
+    <div class="input-group">
+      <%= form.collection_select(:area_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
+    </div>
+
+    <%= form.label :contracts, "Número de Contratos", class:"form-label" %>
+    <div id="contracts_container" class="contracts">
+      <%= form.fields_for :contracts do |contract| %>
+        <%= render 'contract_fields', f: contract %>
       <% end %>
-      </ul>
+    </div>
+
+    <div class="input-group">
+      <%= link_to_add_association form, :contracts, data: {association_insertion_node: '.contracts', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
+        <span class="fa fa-plus"></span>
+        Agregar Contrato
+      <% end %>
+    </div>
+
+    <br />
+
+    <%= form.label :name, "Descripción del Cargo", class:'form-label' %>
+    <div class="input-group">
+      <%= form.text_area :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
     </div>
   <% end %>
-
-  <br />
-
-  <%= form.label :code, "Código", class:'form-label' %>
-  <div class="input-group">
-    <%= form.text_field :code, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
-  </div>
-
-  <%= form.label :name, "Nombre", class:'form-label' %>
-  <div class="input-group">
-    <%= form.text_field :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
-  </div>
-
-  <%= form.label :area, "Dependencia", class:'form-label' %>
-  <div class="input-group">
-    <%= form.collection_select(:area_id, Area.get_all_sorted, :id, :name, {include_blank:'NINGUNA'}, {class:'form-control'}) %>
-  </div>
-
-  <%= form.label :contracts, "Número de Contratos", class:"form-label" %>
-  <div id="contracts_container" class="contracts">
-    <%= form.fields_for :contracts do |contract| %>
-      <%= render 'contract_fields', f: contract %>
-    <% end %>
-  </div>
-
-  <div class="input-group">
-    <%= link_to_add_association form, :contracts, data: {association_insertion_node: '.contracts', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
-      <span class="fa fa-plus"></span>
-      Agregar Contrato
-    <% end %>
-  </div>
-
-  <br />
-
-  <div class="actions">
-    <%= form.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
-  </div>
-<% end %>
+</div>

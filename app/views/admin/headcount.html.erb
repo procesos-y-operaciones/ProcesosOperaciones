@@ -1,0 +1,7 @@
+<h2 class="center second">HeadCount</h2>
+<br />
+<br />
+<h2 class="center second"><%= Area.model_name.human(:count => 2) %></h2>
+<hr />
+<div id='chart'></div>
+<%= render_chart @chart, 'chart' %>

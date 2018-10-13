@@ -9,12 +9,12 @@
     <tr>
       <th>Nombre</th>
       <th>Tipo</th>
-      <th></th>
       <th>Porcentaje</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-  <% if @users == nil %>
+  <% if @goals == nil %>
     <tr class="clickable-box">
       <td class='clickable-row' data-href='<%= new_goal_path %>'>NO TIENES NINGÚN OBJETIVO</td>
       <td></td>
@@ -25,19 +25,27 @@
     <% @types.each do |t| %>
       <% current_user.goals.get_by_type(t).each do |g| %>
         <tr class="clickable-box">
-          <td class='clickable-row' data-href='<%= edit_goal_path(user) %>'><%= g.name %></td>
-          <td class='clickable-row' data-href='<%= edit_goal_path(user) %>'><%= g.goal_type_id %></td>
-          <td class='clickable-row' data-href='<%= edit_goal_path(user) %>'><%= g.percentaje %>%</td>
-          <td><%= link_to goals_path(g), method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
+          <td class='clickable-row' data-href='<%= edit_goal_path(g) %>'><%= g.name %></td>
+          <td class='clickable-row' data-href='<%= edit_goal_path(g) %>'><%= g.goal_type_id %></td>
+          <td class='percentaje' data-href='<%= edit_goal_path(g) %>'><%= g.percentaje %>%</td>
+          <td><%= link_to g, method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
         </tr>
-      <% end %>      
+      <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     <% end %>
+  </tbody>
+  <tfoot>
     <tr class="clickable-box">
       <td class='clickable-row' data-href='<%= new_goal_path %>'>AÑADIR OBJETIVO</td>
       <td></td>
       <td></td>
       <td ><%= link_to new_goal_path do %><i class="fa fa-plus"></i><% end %></td>
     </tr>
+  </tfoot>
   <% end %>
-  </tbody>
 </table>

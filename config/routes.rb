@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "users/evaluate", :to => "users#evaluate", :as => "evaluate_user"
   get "users/accept", :to => "users#accept", :as => "accept_user"
   patch "users/update_step/:id", :to => "users#update_step", :as => "update_step_user"
+  post "users/import", :to => "users#import", :as => "import_user"
   resources :users
 
   resources :generation_ranges
@@ -26,6 +27,10 @@ Rails.application.routes.draw do
 
   get "areas/structure/:id", to: "areas#structure"
   get "admin/manage"
+  get "admin/performance"
+  get "admin/architecture"
+  get "admin/structure"
+  get "admin/headcount"
 
   get "cities_list/:state", to: "application#cities"
   get "step/:user", to: "application#step"

@@ -74,6 +74,11 @@ class UsersController < ApplicationController
     @users = current_user.get_evaluates
   end
 
+  def import
+    User.import(params[:file])
+    redirect_to users_path, notice: "Datos importados"
+  end
+
   private
 
     def set_user

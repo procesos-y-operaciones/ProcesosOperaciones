@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
     @goal.user_id = current_user.id
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to goals_path, notice: t('activerecord.successful.messages.created', :model => @goal.class.model_name.human) }
+        format.html { redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.created', :model => @goal.class.model_name.human) }
         format.json { render :show, status: :created, location: @goal }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update(goal_params)
-        format.html { redirect_to areas_path, notice: t('activerecord.successful.messages.updated', :model => @goal.class.model_name.human) }
+        format.html { redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.updated', :model => @goal.class.model_name.human) }
         format.json { render :show, status: :ok, location: @goal }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     respond_to do |format|
-      format.html { redirect_to goals_url, notice: t('activerecord.successful.messages.deleted', :model => @goal.class.model_name.human) }
+      format.html { redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.deleted', :model => @goal.class.model_name.human) }
       format.json { head :no_content }
     end
   end

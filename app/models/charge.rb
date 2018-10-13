@@ -14,6 +14,7 @@
 class Charge < ApplicationRecord
 
   has_many :contracts, dependent: :destroy
+  has_many :users
   accepts_nested_attributes_for :contracts, allow_destroy: true
 
   def self.get_all_sorted

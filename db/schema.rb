@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180907199001) do
   create_table "goal_types", force: :cascade do |t|
     t.string "name"
     t.string "code"
+    t.string "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,8 +5,8 @@
 <hr />
 <%= search_form_for @search, url: users_url, class:"" do |f| %>
   <div class="input-group">
-    <%= f.number_field :document_cont, placeholder: "DOCUMENTO", class:"col-sm-3 form-control" %>
-    <%= f.text_field :first_name_cont, placeholder: "NOMBRE", class:"col-sm-9 form-control" %>
+    <%= f.number_field :document_cont, placeholder: "DOCUMENTO", class:"offset-md-1 col-sm-3 form-control" %>
+    <%= f.text_field :first_name_cont, placeholder: "NOMBRE", class:"offset-md-1 col-sm-7 form-control" %>
   </div>
   <div class="col-sm-3 offset-md-9">
     <button type="submit" class="minibtn btn-default">
@@ -33,7 +33,7 @@
       <tr class="clickable-box">
         <td class='clickable-row' data-href='<%= edit_user_path(user) %>'><%= user.document %></td>
         <td class='clickable-row' data-href='<%= edit_user_path(user) %>'><%= user.first_name %></td>
-        <td><%= link_to registration_path(user), method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
+        <td><%= link_to user, method: :delete, data: { confirm: t('general.messages.delete') } do  %><span class="fa fa-trash-o"></span><% end %></td>
       </tr>
     <% end %>
     <tr class="clickable-box">
@@ -43,6 +43,16 @@
     </tr>
   </tbody>
 </table>
+
+<%= form_tag import_user_path, multipart: true do %>
+  <span class="btn btn-default btn-file">
+    Escoge el archivo
+    <%= file_field_tag :file, class:'btn btn-default' %>
+  </span>
+  <%= submit_tag "Importar CSV", class:'btn btn-default floatRight' %>
+<% end %>
+
+<br />
 
 <div class="floatRight">
   <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class:"pagination-lg" %>

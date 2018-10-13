@@ -86,4 +86,10 @@ class User < ApplicationRecord
     self.order('created_at DESC')
   end
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      User.create! row.to_hash
+    end
+  end
+
 end

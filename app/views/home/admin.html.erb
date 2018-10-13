@@ -1,13 +1,18 @@
 <h2 class="center second">Administrador</h2>
 <br />
+<hr />
 <br />
-
-<div class="offset-sm-1 col-sm-2">
-  <%= link_to admin_manage_path, class: "btn-circle btn-inverse" do %>
-    <span class="fa">&#xf022;</span>
-  <% end %>
-  <br>
-  <p class="second">
-    Administrar Datos
-  </p>
+<div class="row">
+  <div class="offset-sm-1 col-sm-4 center p-4">
+    <%= link_to image_tag("AO.jpg", border: 0, width: '150px'), {action: 'architecture', controller: 'admin'}, {class: 'btn btn-inverse center'}  %>
+    <br />
+    <br />
+    <h5 class="first">  Arquitectura Organizacional</h5>
+  </div>
+  <div class="offset-sm-2 col-sm-4 center p-4">
+    <%= link_to image_tag("GD.jpg", border: 0, width: '150px'), {action: 'performance', controller: 'admin'}, {class: 'btn btn-inverse center'}  %>
+    <br />
+    <br />
+    <h5 class="first">  Gestión de Desempeño</h5>
+  </div>
 </div>

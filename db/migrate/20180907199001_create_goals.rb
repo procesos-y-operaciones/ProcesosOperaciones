@@ -2,15 +2,14 @@ class CreateGoals < ActiveRecord::Migration[5.1]
   def change
     create_table :goals do |t|
 
+      t.string    :goal_name
       t.integer   :phases_number
+      t.string    :general_ind
+      t.string    :specific_ind
       t.integer   :percentaje
-      t.string    :name
-      t.string    :comment
 
       t.belongs_to  :period, index: true
-      t.belongs_to  :goal_type, index: true
-      t.belongs_to  :user, index: true
-      t.belongs_to  :evaluation, index: true
+      t.belongs_to  :goal_type, index: true  
 
       t.timestamps
     end

@@ -12,30 +12,59 @@
 
   <br />
 
-  <%= form.label :code, "Código", class:'form-label' %>
-  <div class="input-group">
-    <%= form.text_field :code, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+  <div class="row p-4">
+    <div class="col-sm-5">
+      <%= form.label :code, "Código", class:'form-label' %>
+      <%= form.text_field :code, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :name, "Nombre", class:'form-label' %>
+      <%= form.text_field :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+    <div class="col-sm-5">
+      <%= form.label :name, "Estado", class:'form-label' %>
+      <%= form.text_field :state, readOnly:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+    </div>
+
+    <div class="col-sm-5">
+      <%= form.label :date_beg_p1, "Fecha Inicio - Fase 1", class:'form-label' %>
+      <%= form.date_field :date_beg_p1, class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :date_end_p1, "Fecha Fin - Fase 1", class:'form-label' %>
+      <%= form.date_field :date_end_p1, class:'form-control' %>
+    </div>
+    <div class="col-sm-5">
+      <%= form.label :date_beg_p2, "Fecha Inicio - Fase 2", class:'form-label' %>
+      <%= form.date_field :date_beg_p2, class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :date_end_p2, "Fecha Fin - Fase 2", class:'form-label' %>
+      <%= form.date_field :date_end_p2, class:'form-control' %>
+    </div>
+    <div class="col-sm-5">
+      <%= form.label :date_beg_p3, "Fecha Inicio - Fase 3", class:'form-label' %>
+      <%= form.date_field :date_beg_p3, class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :date_end_p3, "Fecha Fin - Fase 3", class:'form-label' %>
+      <%= form.date_field :date_end_p3, class:'form-control' %>
+    </div>
+    <div class="col-sm-5">
+      <%= form.label :date_beg_p4, "Fecha Inicio - Fase 4", class:'form-label' %>
+      <%= form.date_field :date_beg_p4, class:'form-control' %>
+    </div>
+    <div class="offset-sm-1 col-sm-5">
+      <%= form.label :date_end_p4, "Fecha Fin - Fase 4", class:'form-label' %>
+      <%= form.date_field :date_end_p4, class:'form-control' %>
+    </div>
+
+
   </div>
 
-  <%= form.label :name, "Nombre", class:'form-label' %>
-  <div class="input-group">
-    <%= form.text_field :name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
-  </div>
 
-  <%= form.label :name, "Estado", class:'form-label' %>
-  <div class="input-group">
-    <%= form.text_field :state, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
-  </div>
-
-  <%= form.label :name, "Fecha de Inicio", class:'form-label' %>
-  <div class="input-group">
-    <%= form.date_field :date_beg, required:true, class:'form-control' %>
-  </div>
-
-  <%= form.label :name, "Fecha de Expiración", class:'form-label' %>
-  <div class="input-group">
-    <%= form.date_field :date_beg, required:true, class:'form-control' %>
-  </div>
 
   <br />
 

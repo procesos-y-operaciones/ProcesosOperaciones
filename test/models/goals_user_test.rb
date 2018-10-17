@@ -1,18 +1,15 @@
 # == Schema Information
 #
-# Table name: evaluations
+# Table name: goals_users
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  code       :string
-#  formula    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class EvaluationTest < ActiveSupport::TestCase
+class GoalsUserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

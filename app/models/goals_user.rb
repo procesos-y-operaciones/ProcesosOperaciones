@@ -1,18 +1,15 @@
 # == Schema Information
 #
-# Table name: phases
+# Table name: goals_users
 #
 #  id         :integer          not null, primary key
-#  proposed   :integer
-#  reached    :integer
-#  compromise :string
-#  goal_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Phase < ApplicationRecord
+class GoalsUser < ApplicationRecord
 
-  belongs_to :goal
+  belongs_to  :user
+  belongs_to  :goal
 
 end

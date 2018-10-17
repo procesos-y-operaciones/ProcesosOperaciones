@@ -5,8 +5,14 @@ class CreatePeriods < ActiveRecord::Migration[5.1]
       t.string    :name
       t.string    :code
       t.string    :state
-      t.date      :date_beg
-      t.date      :date_end
+      t.date      :date_beg_p1
+      t.date      :date_end_p1
+      t.date      :date_beg_p2
+      t.date      :date_end_p2
+      t.date      :date_beg_p3
+      t.date      :date_end_p3
+      t.date      :date_beg_p4
+      t.date      :date_end_p4
 
       t.timestamps
     end

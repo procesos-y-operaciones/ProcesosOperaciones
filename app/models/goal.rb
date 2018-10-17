@@ -4,17 +4,21 @@
 #
 #  id            :integer          not null, primary key
 #  phases_number :integer
+#  percentaje    :integer
+#  name          :string
 #  comment       :string
 #  period_id     :integer
 #  goal_type_id  :integer
-#  user_id       :integer
+#  evaluation_id :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 
 class Goal < ApplicationRecord
 
-  has_many :phases
+  has_many  :goals_users
+  has_many  :users, :through => :goals_users
+  has_many  :phases
   accepts_nested_attributes_for :phases, reject_if: :all_blank, allow_destroy: true
 
   def self.get_all_sorted

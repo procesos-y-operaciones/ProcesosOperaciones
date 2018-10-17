@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180907199001) do
+ActiveRecord::Schema.define(version: 20181017162223) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -96,20 +96,26 @@ ActiveRecord::Schema.define(version: 20180907199001) do
   end
 
   create_table "goals", force: :cascade do |t|
+    t.string "goal_name"
     t.integer "phases_number"
+    t.string "general_ind"
+    t.string "specific_ind"
     t.integer "percentaje"
-    t.string "name"
-    t.string "comment"
     t.integer "period_id"
     t.integer "goal_type_id"
-    t.integer "user_id"
-    t.integer "evaluation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["evaluation_id"], name: "index_goals_on_evaluation_id"
     t.index ["goal_type_id"], name: "index_goals_on_goal_type_id"
     t.index ["period_id"], name: "index_goals_on_period_id"
-    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "goals_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_goals_users_on_goal_id"
+    t.index ["user_id"], name: "index_goals_users_on_user_id"
   end
 
   create_table "identification_types", force: :cascade do |t|
@@ -123,8 +129,14 @@ ActiveRecord::Schema.define(version: 20180907199001) do
     t.string "name"
     t.string "code"
     t.string "state"
-    t.date "date_beg"
-    t.date "date_end"
+    t.date "date_beg_p1"
+    t.date "date_end_p1"
+    t.date "date_beg_p2"
+    t.date "date_end_p2"
+    t.date "date_beg_p3"
+    t.date "date_end_p3"
+    t.date "date_beg_p4"
+    t.date "date_end_p4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

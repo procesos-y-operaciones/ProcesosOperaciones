@@ -1191,7 +1191,13 @@ ContractType.create([
 ])
 
 Period.create([
-    {name: 'AÑO 2018', code: '001', state: 'VIGENTE', date_beg: '01/01/2018', date_end: '01/12/2018'}
+    {
+      name: 'AÑO 2018', code: '001', state: '',
+      date_beg_p1: '01/01/2018', date_end_p1: '01/02/2018',
+      date_beg_p2: '02/02/2018', date_end_p2: '01/03/2018',
+      date_beg_p3: '02/03/2018', date_end_p3: '01/11/2018',
+      date_beg_p4: '02/11/2018', date_end_p4: '31/12/2018',
+    }
 ])
 
 GoalType.create([

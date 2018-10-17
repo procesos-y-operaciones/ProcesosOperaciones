@@ -1,0 +1,2 @@
+module GoalsUsersHelper
+end

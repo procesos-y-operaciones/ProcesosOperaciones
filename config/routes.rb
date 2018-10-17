@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :goals_users
   resources :evaluations
   devise_for :users, :controllers => { registrations: 'registrations' }, :path_prefix => 'my'
   get "users/evaluation", :to => 'users#evaluation', :as => 'evaluation_user'
@@ -25,12 +26,14 @@ Rails.application.routes.draw do
   resources :cities
   resources :departaments
 
-  get "areas/structure/:id", to: "areas#structure"
   get "admin/manage"
-  get "admin/performance"
   get "admin/architecture"
   get "admin/structure"
   get "admin/headcount"
+  get "areas/structure/:id", to: "areas#structure"
+  get "admin/performance"
+  get "admin/settings"
+
 
   get "cities_list/:state", to: "application#cities"
   get "step/:user", to: "application#step"

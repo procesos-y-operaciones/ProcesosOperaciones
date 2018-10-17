@@ -6,6 +6,7 @@
 #  proposed   :integer
 #  reached    :integer
 #  compromise :string
+#  goal_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

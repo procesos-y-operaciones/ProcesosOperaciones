@@ -32,4 +32,7 @@ class AdminController < ApplicationController
     end
   end
 
+  def settings
+  end
+
 end

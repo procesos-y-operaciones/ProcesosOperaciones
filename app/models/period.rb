@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: periods
+# Table name: selfs
 #
 #  id          :integer          not null, primary key
 #  name        :string
@@ -26,6 +26,26 @@ class Period < ApplicationRecord
 
   def self.get_name_sorted
     self.order('name ASC')
+  end
+
+  def update_state
+    today = Date.today
+    if self.date_beg_p1 <= today && today < self.date_end_p1
+      self.update(state: 'FASE 1')
+      self.date_beg_p2
+    elsif self.date_beg_p2 <= today && today < self.date_end_p2
+      self.update(state: 'FASE 2')
+      self.date_beg_p3
+    elsif self.date_beg_p3 <= today && today < self.date_end_p3
+      self.update(state: 'FASE 3')
+      self.date_beg_p4
+    elsif self.date_beg_p4 <= today && today < self.date_end_p4
+      self.update(state: 'FASE 4')
+      self.date_end_p4
+    else
+      self.update(state: 'CADUCADO')
+      nil
+    end
   end
 
 end

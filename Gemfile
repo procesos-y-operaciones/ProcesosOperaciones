@@ -58,6 +58,8 @@ gem 'cocoon'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'google_visualr', '~> 2.5.1'
+# Whenever
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

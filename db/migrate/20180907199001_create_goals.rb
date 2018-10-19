@@ -7,9 +7,10 @@ class CreateGoals < ActiveRecord::Migration[5.1]
       t.string    :general_ind
       t.string    :specific_ind
       t.integer   :percentaje
+      t.integer   :resource
 
       t.belongs_to  :period, index: true
-      t.belongs_to  :goal_type, index: true  
+      t.belongs_to  :goal_type, index: true
 
       t.timestamps
     end

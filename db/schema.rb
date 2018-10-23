@@ -96,20 +96,25 @@ ActiveRecord::Schema.define(version: 20181017162223) do
   end
 
   create_table "goals", force: :cascade do |t|
+    t.string "code"
     t.string "goal_name"
     t.integer "phases_number"
     t.string "general_ind"
     t.string "specific_ind"
     t.integer "percentaje"
+    t.integer "resource"
     t.integer "period_id"
     t.integer "goal_type_id"
+    t.integer "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_goals_on_area_id"
     t.index ["goal_type_id"], name: "index_goals_on_goal_type_id"
     t.index ["period_id"], name: "index_goals_on_period_id"
   end
 
   create_table "goals_users", force: :cascade do |t|
+    t.integer "resource"
     t.integer "user_id"
     t.integer "goal_id"
     t.datetime "created_at", null: false
@@ -146,9 +151,11 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.integer "reached"
     t.string "compromise"
     t.integer "goal_id"
+    t.integer "goals_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_phases_on_goal_id"
+    t.index ["goals_user_id"], name: "index_phases_on_goals_user_id"
   end
 
   create_table "roles", force: :cascade do |t|

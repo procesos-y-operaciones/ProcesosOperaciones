@@ -1,3 +1,5 @@
+<%= javascript_include_tag "periods" %>
+
 <%= form_with(model: period, local: true) do |form| %>
   <% if period.errors.any? %>
     <div id="error_explanation">
@@ -30,35 +32,35 @@
 
     <div class="col-sm-5">
       <%= form.label :date_beg_p1, "Fecha Inicio - Fase 1", class:'form-label' %>
-      <%= form.date_field :date_beg_p1, class:'form-control' %>
+      <%= form.date_field :date_beg_p1, id:'date_beg_p1', class:'form-control' %>
     </div>
     <div class="offset-sm-1 col-sm-5">
       <%= form.label :date_end_p1, "Fecha Fin - Fase 1", class:'form-label' %>
-      <%= form.date_field :date_end_p1, class:'form-control' %>
+      <%= form.date_field :date_end_p1, id:'date_end_p1', class:'form-control' %>
     </div>
     <div class="col-sm-5">
       <%= form.label :date_beg_p2, "Fecha Inicio - Fase 2", class:'form-label' %>
-      <%= form.date_field :date_beg_p2, class:'form-control' %>
+      <%= form.date_field :date_beg_p2, id:'date_beg_p2', class:'form-control' %>
     </div>
     <div class="offset-sm-1 col-sm-5">
       <%= form.label :date_end_p2, "Fecha Fin - Fase 2", class:'form-label' %>
-      <%= form.date_field :date_end_p2, class:'form-control' %>
+      <%= form.date_field :date_end_p2, id:'date_end_p2', class:'form-control' %>
     </div>
     <div class="col-sm-5">
       <%= form.label :date_beg_p3, "Fecha Inicio - Fase 3", class:'form-label' %>
-      <%= form.date_field :date_beg_p3, class:'form-control' %>
+      <%= form.date_field :date_beg_p3, id:'date_beg_p3', class:'form-control' %>
     </div>
     <div class="offset-sm-1 col-sm-5">
       <%= form.label :date_end_p3, "Fecha Fin - Fase 3", class:'form-label' %>
-      <%= form.date_field :date_end_p3, class:'form-control' %>
+      <%= form.date_field :date_end_p3, id:'date_end_p3', class:'form-control' %>
     </div>
     <div class="col-sm-5">
       <%= form.label :date_beg_p4, "Fecha Inicio - Fase 4", class:'form-label' %>
-      <%= form.date_field :date_beg_p4, class:'form-control' %>
+      <%= form.date_field :date_beg_p4, id:'date_beg_p4', class:'form-control' %>
     </div>
     <div class="offset-sm-1 col-sm-5">
       <%= form.label :date_end_p4, "Fecha Fin - Fase 4", class:'form-label' %>
-      <%= form.date_field :date_end_p4, class:'form-control' %>
+      <%= form.date_field :date_end_p4, id:'date_end_p4', class:'form-control' %>
     </div>
 
 

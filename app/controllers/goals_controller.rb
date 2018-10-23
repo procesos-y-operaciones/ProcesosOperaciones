@@ -4,7 +4,9 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @search = Goal.get_all_sorted.ransack(params[:q])
+    @goals = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /goals/1
@@ -25,10 +27,9 @@ class GoalsController < ApplicationController
   # POST /goals.json
   def create
     @goal = Goal.new(goal_params)
-    @goal.user_id = current_user.id
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.created', :model => @goal.class.model_name.human) }
+        format.html { redirect_to goals_path, notice: t('activerecord.successful.messages.created', :model => @goal.class.model_name.human) }
         format.json { render :show, status: :created, location: @goal }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update(goal_params)
-        format.html { redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.updated', :model => @goal.class.model_name.human) }
+        format.html { redirect_to goals_path, notice: t('activerecord.successful.messages.updated', :model => @goal.class.model_name.human) }
         format.json { render :show, status: :ok, location: @goal }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     respond_to do |format|
-      format.html { redirect_to evaluate_user_path, notice: t('activerecord.successful.messages.deleted', :model => @goal.class.model_name.human) }
+      format.html { redirect_to goals_path, notice: t('activerecord.successful.messages.deleted', :model => @goal.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -70,8 +71,8 @@ class GoalsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
       params.require(:goal).permit(
-        :phases_number, :percentaje, :name, :comment, :period_id, :goal_type_id,
-        :user_id, :evaluation_id, phases_attributes: Phase.attribute_names.map(&:to_sym).push(:_destroy),
+        :code, :goal_name, :phases_number, :general_ind, :specific_ind, :percentaje, :area_id,
+        :resource, :period_id, :goal_type_id, phases_attributes: Phase.attribute_names.map(&:to_sym).push(:_destroy),
       )
     end
 end

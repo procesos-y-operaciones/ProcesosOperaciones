@@ -27,10 +27,9 @@ class PeriodsController < ApplicationController
   # POST /periods.json
   def create
     @period = Period.new(period_params)
-
     respond_to do |format|
       if @period.save
-        format.html { redirect_to @period, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
+        format.html { redirect_to periods_path, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
         format.json { render :show, status: :created, location: @period }
       else
         format.html { render :new }
@@ -44,7 +43,7 @@ class PeriodsController < ApplicationController
   def update
     respond_to do |format|
       if @period.update(period_params)
-        format.html { redirect_to @period, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
+        format.html { redirect_to periods_path, notice: t('activerecord.successful.messages.created', :model => @period.class.model_name.human) }
         format.json { render :show, status: :ok, location: @period }
       else
         format.html { render :edit }
@@ -72,7 +71,8 @@ class PeriodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params
       params.require(:period).permit(
-        :code, :name, :state, :date_beg, :date_end
+        :code, :name, :state, :date_beg_p1, :date_end_p1, :date_beg_p2, :date_end_p2,
+        :date_beg_p3, :date_end_p3, :date_beg_p4, :date_end_p4,
       )
     end
 end

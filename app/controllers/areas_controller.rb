@@ -27,7 +27,6 @@ class AreasController < ApplicationController
   # POST /areas.json
   def create
     @area = Area.new(area_params)
-
     respond_to do |format|
       if @area.save
         format.html { redirect_to areas_path, notice: t('activerecord.successful.messages.created', :model => @area.class.model_name.human) }

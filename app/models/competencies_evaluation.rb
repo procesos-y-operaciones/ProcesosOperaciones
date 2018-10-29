@@ -1,0 +1,2 @@
+class CompetenciesEvaluation < ApplicationRecord
+end

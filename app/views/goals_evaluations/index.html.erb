@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Goals Evaluations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals_evaluations.each do |goals_evaluation| %>
+      <tr>
+        <td><%= link_to 'Show', goals_evaluation %></td>
+        <td><%= link_to 'Edit', edit_goals_evaluation_path(goals_evaluation) %></td>
+        <td><%= link_to 'Destroy', goals_evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Goals Evaluation', new_goals_evaluation_path %>

@@ -1,8 +1,6 @@
 <%= javascript_include_tag "goals" %>
 
 <h2 class="center second"><%= Goal.model_name.human(:count => 2) %></h2>
-
-
 <hr />
 <%= search_form_for @search, url: goals_url, class:"" do |f| %>
   <div class="input-group">

@@ -43,9 +43,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  has_many  :goals_users
-  has_many  :goals, :through => :goals_users
-  has_many :users
+  has_many  :evaluations
 
   def full_name
     "#{self.first_name} #{self.second_name} #{self.first_lastname} #{self.second_lastname}"
@@ -62,14 +60,6 @@ class User < ApplicationRecord
     end
   end
 
-  def get_evaluates
-    self.users.where(step: 2)
-  end
-
-  def get_goals
-    self.goals.order('goal_type_id ASC')
-  end
-
   def get_bosses
     if Area.exists?(self.area_id)
       high_area = Area.find(self.area_id)
@@ -81,6 +71,10 @@ class User < ApplicationRecord
     else
       []
     end
+  end
+
+  def self.get_users
+    self.where(role_id: 2).order('created_at DESC')
   end
 
   def self.get_all_sorted

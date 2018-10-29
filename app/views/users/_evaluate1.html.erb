@@ -10,7 +10,7 @@
   <div class="row p-4">
     <div class="offset-md-2 col-sm-8">
       <%= f.hidden_field :step, value: 2 %>
-      <%= f.collection_select(:user_id, current_user.get_bosses, :id, :full_name, {include_blank:'SELECCIONE'}, {required:true, class:'styled-select'}) %>
+      <%= f.collection_select(:user_id, current_user.get_bosses, :id, :full_name, {include_blank:'SELECCIONE'}, {required:true, class:'styled-select form-control'}) %>
       <%= f.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
     </div>
 <% end %>

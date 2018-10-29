@@ -5,6 +5,8 @@ class CreatePeriods < ActiveRecord::Migration[5.1]
       t.string    :name
       t.string    :code
       t.string    :state
+      t.integer   :resource
+      t.integer   :boss_id
       t.date      :date_beg_p1
       t.date      :date_end_p1
       t.date      :date_beg_p2

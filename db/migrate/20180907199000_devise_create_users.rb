@@ -22,8 +22,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string  :celphone
       t.string  :address
       t.integer :evaluation_role, default: 3
-      t.integer :step, default: 1
       t.boolean :terms, default: false
+      t.string  :resource
 
       #Dependences
       t.belongs_to  :identification_type, index: true
@@ -34,7 +34,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.belongs_to  :genre, index: true
       t.belongs_to  :generation_range, index: true
       t.belongs_to  :role, index: true
-      t.belongs_to  :user, index: true
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

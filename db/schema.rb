@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181017162223) do
+ActiveRecord::Schema.define(version: 20181029141738) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.index ["departament_id"], name: "index_cities_on_departament_id"
   end
 
+  create_table "competencies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competencies_evaluations", id: false, force: :cascade do |t|
+    t.integer "competency_id"
+    t.integer "evaluation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competency_id"], name: "index_competencies_evaluations_on_competency_id"
+    t.index ["evaluation_id"], name: "index_competencies_evaluations_on_evaluation_id"
+  end
+
   create_table "contract_types", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -67,9 +81,14 @@ ActiveRecord::Schema.define(version: 20181017162223) do
   create_table "evaluations", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.string "formula"
+    t.integer "step", default: 1
+    t.integer "boss_id"
+    t.integer "final_score"
+    t.string "comment"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 
   create_table "generation_ranges", force: :cascade do |t|
@@ -102,25 +121,21 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.string "general_ind"
     t.string "specific_ind"
     t.integer "percentaje"
-    t.integer "resource"
-    t.integer "period_id"
     t.integer "goal_type_id"
     t.integer "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_goals_on_area_id"
     t.index ["goal_type_id"], name: "index_goals_on_goal_type_id"
-    t.index ["period_id"], name: "index_goals_on_period_id"
   end
 
-  create_table "goals_users", force: :cascade do |t|
-    t.integer "resource"
-    t.integer "user_id"
+  create_table "goals_evaluations", id: false, force: :cascade do |t|
     t.integer "goal_id"
+    t.integer "evaluation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["goal_id"], name: "index_goals_users_on_goal_id"
-    t.index ["user_id"], name: "index_goals_users_on_user_id"
+    t.index ["evaluation_id"], name: "index_goals_evaluations_on_evaluation_id"
+    t.index ["goal_id"], name: "index_goals_evaluations_on_goal_id"
   end
 
   create_table "identification_types", force: :cascade do |t|
@@ -134,6 +149,8 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.string "name"
     t.string "code"
     t.string "state"
+    t.integer "resource"
+    t.integer "boss_id"
     t.date "date_beg_p1"
     t.date "date_end_p1"
     t.date "date_beg_p2"
@@ -148,14 +165,19 @@ ActiveRecord::Schema.define(version: 20181017162223) do
 
   create_table "phases", force: :cascade do |t|
     t.integer "proposed"
-    t.integer "reached"
-    t.string "compromise"
     t.integer "goal_id"
-    t.integer "goals_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_phases_on_goal_id"
-    t.index ["goals_user_id"], name: "index_phases_on_goals_user_id"
+  end
+
+  create_table "phases_users", force: :cascade do |t|
+    t.integer "reached"
+    t.string "compromise"
+    t.integer "goals_evaluations_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goals_evaluations_id"], name: "index_phases_users_on_goals_evaluations_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -181,8 +203,8 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.string "celphone"
     t.string "address"
     t.integer "evaluation_role", default: 3
-    t.integer "step", default: 1
     t.boolean "terms", default: false
+    t.string "resource"
     t.integer "identification_type_id"
     t.integer "departament_id"
     t.integer "city_id"
@@ -191,7 +213,6 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.integer "genre_id"
     t.integer "generation_range_id"
     t.integer "role_id"
-    t.integer "user_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -209,7 +230,6 @@ ActiveRecord::Schema.define(version: 20181017162223) do
     t.index ["identification_type_id"], name: "index_users_on_identification_type_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
-    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
 end

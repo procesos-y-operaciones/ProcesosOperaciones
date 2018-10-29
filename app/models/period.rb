@@ -20,6 +20,8 @@
 
 class Period < ApplicationRecord
 
+  has_many  :evaluations
+
   after_commit do
     if self.state == nil || self.state == ""
       UpdaterStepJob.perform_now self

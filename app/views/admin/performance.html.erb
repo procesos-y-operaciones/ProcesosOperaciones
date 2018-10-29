@@ -3,7 +3,17 @@
 <br />
 <div class="row">
 
-  <div class="offset-sm-4 col-sm-4 center">
+  <div class="col-sm-6 center">
+    <%= link_to admin_users_path, class: "btn-circle btn-inverse" do %>
+    <span class="fa">&#xf007;</span>
+    <% end %>
+    <br>
+    <p class="second">
+      Gestión Evaluación Usuarios
+    </p>
+  </div>
+
+  <div class="col-sm-6 center">
     <%= link_to admin_settings_path, class: "btn-circle btn-inverse" do %>
     <span class="fa">&#xf1ad;</span>
     <% end %>

@@ -16,7 +16,6 @@
     <br />
 
     <%= form.hidden_field :phases_number, value:goal.phases_number, id:'phases_number_hid' %>
-    <%= form.hidden_field :resource, value:0 %>
 
     <%= form.label :code, "Código", class:'form-label' %>
     <div class="input-group">
@@ -26,11 +25,6 @@
     <%= form.label :goal_type_id, "Tipo de Objetivo", class:'form-label' %>
     <div class="input-group">
       <%= form.collection_select(:goal_type_id, GoalType.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
-    </div>
-
-    <%= form.label :period_id, "Período", class:'form-label' %>
-    <div class="input-group">
-      <%= form.collection_select(:period_id, Period.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
     </div>
 
     <%= form.label :area_id, "Área", class:'form-label' %>
@@ -50,7 +44,7 @@
 
     <%= form.label :specific_ind, "Indicador Específico", class:'form-label' %>
     <div class="input-group">
-      <%= form.text_field :specific_ind, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+      <%= form.text_area :specific_ind, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
     </div>
 
     <%= form.label :percentaje, "Porcentaje", class:'form-label' %>
@@ -79,6 +73,7 @@
 
     <div class="actions">
       <%= form.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
+      <%= link_to t('general.buttons.back'), goals_path, class:"btn btn-default" %>
     </div>
 
   <% end %>

@@ -35,4 +35,10 @@ class AdminController < ApplicationController
   def settings
   end
 
+  def users
+    @search = User.get_users.ransack(params[:q])
+    @users = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
+  end
+
 end

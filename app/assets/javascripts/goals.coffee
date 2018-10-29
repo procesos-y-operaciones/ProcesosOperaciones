@@ -6,8 +6,6 @@ $ ->
     oldVal = parseInt($('#phases_number_hid').val()) || 0
     newVal = parseInt($('#phases_number').val()) || 0
 
-    console.log newVal - oldVal
-
     #Code Here
     if (newVal - oldVal) > 0
       $('#phases_butt').trigger( "click" ) for i in [0 .. (newVal-oldVal-1)]

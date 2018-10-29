@@ -1,7 +1,8 @@
 <%= javascript_include_tag "users" %>
 
 <h2 class="center second"><%= User.model_name.human(:count => 2) %></h2>
-
+<br />
+<br />
 <hr />
 <%= search_form_for @search, url: users_url, class:"" do |f| %>
   <div class="input-group">

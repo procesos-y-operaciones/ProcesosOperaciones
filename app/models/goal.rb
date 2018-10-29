@@ -16,10 +16,9 @@
 
 class Goal < ApplicationRecord
 
-  has_many  :goals_users
-  has_many  :users, :through => :goals_users
   has_many  :phases
   accepts_nested_attributes_for :phases, reject_if: :all_blank, allow_destroy: true
+  has_and_belongs_to_many :evaluations
 
   def self.get_all_sorted
     self.order('created_at DESC')

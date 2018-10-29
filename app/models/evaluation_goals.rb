@@ -1,0 +1,2 @@
+class EvaluationGoal < ApplicationRecord
+end

@@ -1,2 +1,0 @@
-class CompetenciesEvaluation < ApplicationRecord
-end

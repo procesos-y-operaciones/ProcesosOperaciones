@@ -2,14 +2,14 @@ class CreateEvaluations < ActiveRecord::Migration[5.1]
   def change
     create_table :evaluations do |t|
 
-      t.string  :name
-      t.string  :code
-      t.integer :step, default: 1
       t.integer :boss_id
-      t.integer :final_score
+      t.integer :step, default: 1
       t.string  :comment
+      t.integer :final_score
+      t.string  :resource
 
       t.belongs_to  :user, index: true
+      t.belongs_to  :period, index: true
 
       t.timestamps
     end

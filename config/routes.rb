@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :evaluations_goals
   resources :phases_users
-  resources :competencies_evaluations
-  resources :goals_evaluations
   resources :competencies
   resources :goals_users
   resources :evaluations
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
   get "admin/performance"
   get "admin/settings"
   get "admin/users"
+  get "admin/evaluation/:id", to: "admin#evaluation", as: "admin_evaluation"
 
 
   get "cities_list/:state", to: "application#cities"

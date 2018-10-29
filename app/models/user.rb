@@ -44,6 +44,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   has_many  :evaluations
+  accepts_nested_attributes_for :evaluations, reject_if: :all_blank, allow_destroy: true
 
   def full_name
     "#{self.first_name} #{self.second_name} #{self.first_lastname} #{self.second_lastname}"

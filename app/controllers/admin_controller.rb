@@ -41,4 +41,8 @@ class AdminController < ApplicationController
     @page = params[:page] || 1
   end
 
+  def evaluation
+    @user = User.find(params[:id])
+  end
+
 end

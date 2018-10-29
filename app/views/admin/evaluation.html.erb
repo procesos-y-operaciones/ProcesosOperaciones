@@ -1,0 +1,25 @@
+<h2 class="center second">Evaluaciones de <%= @user.full_name.titleize %></h2>
+<br />
+<br />
+<hr />
+<%= form_for(@user, url: user_url(@user)) do |f| %>
+  <div class="row p-4">
+    <div class="offset-md-2 col-sm-8">
+      <%= f.hidden_field :resource, value: 1 %>
+
+      <div id="evaluations_container" class="evaluations">
+        <%= f.fields_for :evaluations do |evaluation| %>
+          <%= render 'evaluation_fields', f: evaluation %>
+        <% end %>
+      </div>
+
+      <div class="input-group">
+        <%= link_to_add_association f, :evaluations, data: {association_insertion_node: '.evaluations', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
+          <span class="fa">&#x2b;</span>
+          Agregar Evaluación
+        <% end %>
+      </div>
+
+      <%= f.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
+    </div>
+<% end %>

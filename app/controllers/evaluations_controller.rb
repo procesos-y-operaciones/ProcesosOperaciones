@@ -4,7 +4,9 @@ class EvaluationsController < ApplicationController
   # GET /evaluations
   # GET /evaluations.json
   def index
-    @evaluations = Evaluation.all
+    @search = Evaluation.get_all_sorted.ransack(params[:q])
+    @evaluations = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /evaluations/1
@@ -25,14 +27,21 @@ class EvaluationsController < ApplicationController
   # POST /evaluations.json
   def create
     @evaluation = Evaluation.new(evaluation_params)
-
     respond_to do |format|
       if @evaluation.save
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
-        format.json { render :show, status: :created, location: @evaluation }
+        case @evaluation.resource
+        when 1
+          redirect_to admin_users_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
+        else
+          redirect_to evaluations_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
+        end
       else
-        format.html { render :new }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
+        case @evaluation.resource
+        when 1
+          redirect_to admin_users_path, error: "No se pudo crear la evaluación"
+        else
+          render :new
+        end
       end
     end
   end
@@ -42,11 +51,19 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @evaluation }
+        case @evaluation.resource
+        when 1
+          redirect_to admin_users_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
+        else
+          redirect_to evaluations_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
+        case @evaluation.resource
+        when 1
+          redirect_to admin_users_path, error: "No se pudo actualizar la evaluación"
+        else
+          render :new
+        end
       end
     end
   end
@@ -55,9 +72,11 @@ class EvaluationsController < ApplicationController
   # DELETE /evaluations/1.json
   def destroy
     @evaluation.destroy
-    respond_to do |format|
-      format.html { redirect_to evaluations_url, notice: 'Evaluation was successfully destroyed.' }
-      format.json { head :no_content }
+    case @evaluation.resource
+    when 1
+      redirect_to admin_users_path, notice: t('activerecord.successful.messages.deleted', :model => @evaluation.class.model_name.human)
+    else
+      redirect_to evaluations_path, notice: t('activerecord.successful.messages.deleted', :model => @evaluation.class.model_name.human)
     end
   end
 
@@ -69,6 +88,8 @@ class EvaluationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evaluation_params
-      params.fetch(:evaluation, {})
+      params.require(:evaluation).permit(
+        :boss_id, :step, :comment, :final_score, :resource, :user_id, :period_id,
+      )
     end
 end

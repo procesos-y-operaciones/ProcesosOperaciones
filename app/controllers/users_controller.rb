@@ -20,41 +20,48 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path, notice: t('activerecord.successful.messages.created', :model => @user.class.model_name.human)
+      case @user.resource
+      when "1"
+        redirect_to admin_users_path, notice: t('activerecord.successful.messages.created', :model => @user.class.model_name.human)
+      else
+        redirect_to users_path, notice: t('activerecord.successful.messages.created', :model => @user.class.model_name.human)
+      end
     else
-      render :new
+      case @user.resource
+      when "1"
+        redirect_to admin_users_path, notice: t('activerecord.errors.messages.record_invalid', :errors => @user.errors)
+      else
+        render :new
+      end
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to users_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
-    else
-      render :edit
-    end
-  end
-
-  def update_step
-    if @user.update(user_params)
-      case @user.step
-      when 1
-        redirect_to accept_user_path, notice: 'Usuario rechazado'
-      when 2
-        redirect_to evaluate_user_path, notice: 'Jefe seleccionado correctamente'
-      when 3
-        redirect_to accept_user_path, notice: 'Usuario aceptado'
+      case @user.resource
+      when "1"
+        redirect_to admin_users_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
       else
-        redirect_to root_path, notice: "TODO"
+        redirect_to users_path, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human)
       end
-
     else
-      render :edit
+      case @user.resource
+      when "1"
+        redirect_to admin_users_path, notice: t('activerecord.errors.messages.record_invalid', :errors => @user.errors)
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: t('activerecord.successful.messages.deleted', :model => @user.class.model_name.human)
+    case @user.resource
+    when "1"
+      redirect_to admin_users_path, notice: t('activerecord.successful.messages.deleted', :model => @user.class.model_name.human)
+    else
+      redirect_to users_url, notice: t('activerecord.successful.messages.deleted', :model => @user.class.model_name.human)
+    end
   end
 
   def evaluation
@@ -91,8 +98,8 @@ class UsersController < ApplicationController
         :first_lastname, :second_lastname, :born_date, :personal_mail, :corporative_mail,
         :telephone, :celphone, :address, :terms, :identification_type_id, :departament_id,
         :city_id, :area_id, :charge_id, :genre_id, :generation_range_id, :role_id, :email,
-        :password, :password_confirmation, :current_password, :evaluation_role, :step, :age,
-        :user_id,
+        :password, :password_confirmation, :current_password, :evaluation_role, :age,
+        :user_id, :resource, evaluations_attributes: Evaluation.attribute_names.map(&:to_sym).push(:_destroy),
       )
     end
 

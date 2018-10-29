@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181029141738) do
+ActiveRecord::Schema.define(version: 20181029233357) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -79,16 +79,26 @@ ActiveRecord::Schema.define(version: 20181029141738) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
-    t.integer "step", default: 1
     t.integer "boss_id"
-    t.integer "final_score"
+    t.integer "step", default: 1
     t.string "comment"
+    t.integer "final_score"
+    t.string "resource"
     t.integer "user_id"
+    t.integer "period_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["period_id"], name: "index_evaluations_on_period_id"
     t.index ["user_id"], name: "index_evaluations_on_user_id"
+  end
+
+  create_table "evaluations_goals", id: false, force: :cascade do |t|
+    t.integer "goal_id"
+    t.integer "evaluation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evaluation_id"], name: "index_evaluations_goals_on_evaluation_id"
+    t.index ["goal_id"], name: "index_evaluations_goals_on_goal_id"
   end
 
   create_table "generation_ranges", force: :cascade do |t|
@@ -127,15 +137,6 @@ ActiveRecord::Schema.define(version: 20181029141738) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_goals_on_area_id"
     t.index ["goal_type_id"], name: "index_goals_on_goal_type_id"
-  end
-
-  create_table "goals_evaluations", id: false, force: :cascade do |t|
-    t.integer "goal_id"
-    t.integer "evaluation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["evaluation_id"], name: "index_goals_evaluations_on_evaluation_id"
-    t.index ["goal_id"], name: "index_goals_evaluations_on_goal_id"
   end
 
   create_table "identification_types", force: :cascade do |t|

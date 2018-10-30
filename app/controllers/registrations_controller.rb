@@ -13,7 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
       :first_lastname, :second_lastname, :born_date, :personal_mail, :corporative_mail,
       :telephone, :celphone, :address, :terms, :identification_type_id, :departament_id,
       :citie_id, :area_id, :charge_id, :genre_id, :generation_range_id, :role_id, :email,
-      :password, :password_confirmation
+      :password, :password_confirmation, :avatar
     )
   end
 

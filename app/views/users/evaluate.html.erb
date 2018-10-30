@@ -1,8 +1,5 @@
-<input type="hidden" id="user_id" value="<%= current_user.id %>">
-<% if @step == 1 %>
-  <%= render 'evaluate1' %>
-<% elsif @step == 2 %>
-  <%= render 'evaluate2' %>
-<% elsif @step == 3 %>
-  <%= render 'evaluate3' %>
-<% end %>
+<div class="offset-sm-3 col-sm-6">
+  <% @evaluations.each do |e| %>
+    <%= link_to e.get_period_name, evaluation_path(e), class:"btn btn-grad mb-2 fw" %>
+  <% end %>
+</div>

@@ -27,4 +27,12 @@ class Evaluation < ApplicationRecord
     "#{self.name} (#{self.formula})"
   end
 
+  def get_period
+    Period.find(self.period_id)
+  end
+
+  def get_period_name
+    Period.find(self.period_id).name.titleize
+  end
+
 end

@@ -27,21 +27,19 @@ class EvaluationsController < ApplicationController
   # POST /evaluations.json
   def create
     @evaluation = Evaluation.new(evaluation_params)
-    respond_to do |format|
-      if @evaluation.save
-        case @evaluation.resource
-        when 1
-          redirect_to admin_users_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
-        else
-          redirect_to evaluations_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
-        end
+    if @evaluation.save
+      case @evaluation.resource
+      when "1"
+        redirect_to admin_users_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
       else
-        case @evaluation.resource
-        when 1
-          redirect_to admin_users_path, error: "No se pudo crear la evaluación"
-        else
-          render :new
-        end
+        redirect_to evaluations_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
+      end
+    else
+      case @evaluation.resource
+      when "1"
+        redirect_to admin_users_path, error: "No se pudo crear la evaluación"
+      else
+        render :new
       end
     end
   end
@@ -49,21 +47,19 @@ class EvaluationsController < ApplicationController
   # PATCH/PUT /evaluations/1
   # PATCH/PUT /evaluations/1.json
   def update
-    respond_to do |format|
-      if @evaluation.update(evaluation_params)
-        case @evaluation.resource
-        when 1
-          redirect_to admin_users_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
-        else
-          redirect_to evaluations_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
-        end
+    if @evaluation.update(evaluation_params)
+      case @evaluation.resource
+      when "1"
+        redirect_to admin_users_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
       else
-        case @evaluation.resource
-        when 1
-          redirect_to admin_users_path, error: "No se pudo actualizar la evaluación"
-        else
-          render :new
-        end
+        redirect_to evaluations_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
+      end
+    else
+      case @evaluation.resource
+      when "1"
+        redirect_to admin_users_path, error: "No se pudo actualizar la evaluación"
+      else
+        render :new
       end
     end
   end
@@ -73,7 +69,7 @@ class EvaluationsController < ApplicationController
   def destroy
     @evaluation.destroy
     case @evaluation.resource
-    when 1
+    when "1"
       redirect_to admin_users_path, notice: t('activerecord.successful.messages.deleted', :model => @evaluation.class.model_name.human)
     else
       redirect_to evaluations_path, notice: t('activerecord.successful.messages.deleted', :model => @evaluation.class.model_name.human)

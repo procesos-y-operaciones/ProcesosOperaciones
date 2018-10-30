@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_evaluation_path(@evaluation) %> |
-<%= link_to 'Back', evaluations_path %>
+<%= @evaluation.get_period.state %>|<%= @evaluation.step %>
+<br />
+<%= case @evaluation.get_period.state
+when "FASE 1"
+  render "step1"
+when "FASE 2"
+  render "step2"
+when "FASE 3"
+  render "step2"
+when "FASE 4"
+  render "step2"
+else
+  render "step2"
+end %>

@@ -72,9 +72,7 @@ class UsersController < ApplicationController
   end
 
   def evaluate
-    @step = current_user.step
-    @goals = current_user.goals
-    @types = GoalType.get_name_sorted
+    @evaluations = current_user.evaluations
   end
 
   def accept
@@ -98,7 +96,7 @@ class UsersController < ApplicationController
         :first_lastname, :second_lastname, :born_date, :personal_mail, :corporative_mail,
         :telephone, :celphone, :address, :terms, :identification_type_id, :departament_id,
         :city_id, :area_id, :charge_id, :genre_id, :generation_range_id, :role_id, :email,
-        :password, :password_confirmation, :current_password, :evaluation_role, :age,
+        :password, :password_confirmation, :current_password, :evaluation_role, :age, :avatar,
         :user_id, :resource, evaluations_attributes: Evaluation.attribute_names.map(&:to_sym).push(:_destroy),
       )
     end

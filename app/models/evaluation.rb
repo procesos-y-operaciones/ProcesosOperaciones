@@ -12,8 +12,13 @@
 
 class Evaluation < ApplicationRecord
 
-  has_and_belongs_to_many :goals
-  has_and_belongs_to_many :compentencies
+  belongs_to :user
+  has_many :evaluations_goals
+  has_many :goals, :through => :evaluations_goals, :class_name => 'EvaluationsGoal'
+  accepts_nested_attributes_for :evaluations_goals, reject_if: :all_blank, allow_destroy: true
+  has_many :evaluations_competencies
+  has_many :competencies, :through => :evaluations_competencies, :class_name => 'EvaluationsCompetency'
+  #has_and_belongs_to_many :competencies
 
   def self.get_all_sorted
     self.order('created_at DESC')

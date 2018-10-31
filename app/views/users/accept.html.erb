@@ -13,21 +13,23 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @evaluations.each do |e| %>
       <tr>
-        <td class='clickable-row' data-href='<%= user_path(user) %>'><%= user.full_name %></td>
+        <td class="p-4"><%= e.user.full_name %></td>
         <td></td>
         <td>
-          <%= form_for(user, url: update_step_user_url(user)) do |f| %>
+          <%= form_for(e, url: evaluation_url(e)) do |f| %>
             <%= f.hidden_field :step, value: 3 %>
+            <%= f.hidden_field :resource, value: 3 %>
             <%= f.button :submit, class:'minibtn btn-default' do %>
               <span class="fa fa-user-plus">
             <% end %>
           <% end %>
         </td>
         <td>
-          <%= form_for(user, url: update_step_user_url(user)) do |f| %>
+          <%= form_for(e, url: evaluation_url(e)) do |f| %>
             <%= f.hidden_field :step, value: 1 %>
+            <%= f.hidden_field :resource, value: 3 %>
             <%= f.button :submit, class:'minibtn btn-default' do %>
               <span class="fa fa-user-times">
             <% end %>

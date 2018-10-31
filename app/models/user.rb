@@ -64,6 +64,10 @@ class User < ApplicationRecord
     end
   end
 
+  def get_evaluates_accept
+    Evaluation.where(step: 2, boss_id: self.id)
+  end
+
   def get_bosses
     if Area.exists?(self.area_id)
       high_area = Area.find(self.area_id)

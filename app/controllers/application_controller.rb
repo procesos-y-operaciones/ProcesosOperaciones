@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def step
-    render json: User.select(:id, :name, :step).find(params[:user]).to_json
+    render json: Evaluation.select(:id, :step).find(params[:evaluation]).to_json
   end
 
   def cities

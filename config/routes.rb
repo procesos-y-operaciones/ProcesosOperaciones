@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
 
   get "cities_list/:state", to: "application#cities"
-  get "step/:user", to: "application#step"
+  get "step/:evaluation", to: "application#step"
 
   root to: "home#index"
 

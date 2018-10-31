@@ -1,7 +1,7 @@
 $ ->
 
   get_step = ->
-    $.getJSON '/step/' + $('#user_id').val(), (data) ->
+    $.getJSON '/step/' + $('#evaluation_id').val(), (data) ->
       console.log data["step"]
       if data["step"] == 3
         location.reload()

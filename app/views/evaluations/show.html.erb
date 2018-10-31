@@ -2,9 +2,21 @@
 <br />
 <%= case @evaluation.get_period.state
 when "FASE 1"
-  render "step1"
+  case @evaluation.step
+  when 1
+    render "step1"
+  when 2
+    render "step2"
+  else
+    render "error"
+  end
 when "FASE 2"
-  render "step2"
+  case @evaluation.step
+  when 3
+    render "step3"
+  else
+    render "error"
+  end
 when "FASE 3"
   render "step2"
 when "FASE 4"

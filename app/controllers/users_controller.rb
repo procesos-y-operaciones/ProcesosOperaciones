@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def accept
-    @users = current_user.get_evaluates
+    @evaluations = current_user.get_evaluates_accept
   end
 
   def import

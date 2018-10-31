@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(version: 20181030000429) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "competencies_evaluations", id: false, force: :cascade do |t|
-    t.integer "competency_id"
-    t.integer "evaluation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["competency_id"], name: "index_competencies_evaluations_on_competency_id"
-    t.index ["evaluation_id"], name: "index_competencies_evaluations_on_evaluation_id"
-  end
-
   create_table "contract_types", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -92,7 +83,16 @@ ActiveRecord::Schema.define(version: 20181030000429) do
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 
-  create_table "evaluations_goals", id: false, force: :cascade do |t|
+  create_table "evaluations_competencies", force: :cascade do |t|
+    t.integer "competency_id"
+    t.integer "evaluation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competency_id"], name: "index_evaluations_competencies_on_competency_id"
+    t.index ["evaluation_id"], name: "index_evaluations_competencies_on_evaluation_id"
+  end
+
+  create_table "evaluations_goals", force: :cascade do |t|
     t.integer "goal_id"
     t.integer "evaluation_id"
     t.datetime "created_at", null: false

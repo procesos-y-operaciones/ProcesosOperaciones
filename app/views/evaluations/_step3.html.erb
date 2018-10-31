@@ -1,0 +1,30 @@
+<h2 class="center second">Seleccionar Jefe</h2>
+<h3 class="center second">Paso 1</h3>
+<hr />
+<br />
+<p class="center">
+  ¡Selecciona tu jefe!
+</p>
+<br />
+<%= form_for(@evaluation, url: evaluation_url(@evaluation)) do |f| %>
+  <div class="row p-4">
+    <div class="offset-md-2 col-sm-8">
+      <%= f.hidden_field :resource, value:2 %>
+      <%= f.hidden_field :step, value:4 %>
+
+      <%= f.label :evaluations_goals, "Objetivos" %>
+      <div id="evaluations_goals_container" class="evaluations_goals">
+        <%= f.fields_for :evaluations_goals do |evaluations_goal| %>
+          <%= render 'evaluations_goal_fields', f: evaluations_goal %>
+        <% end %>
+      </div>
+      <div class="input-group">
+        <%= link_to_add_association f, :evaluations_goals, data: {association_insertion_node: '.evaluations_goals', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
+          <span class="fa">&#x2b;</span>
+          Agregar Objetivo
+        <% end %>
+      </div>
+
+      <%= f.submit t('general.buttons.submit'), class:"btn btn-default floatRight m-4" %>
+    </div>
+<% end %>

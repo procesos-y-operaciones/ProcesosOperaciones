@@ -4,7 +4,9 @@ class CompetenciesController < ApplicationController
   # GET /competencies
   # GET /competencies.json
   def index
-    @competencies = Competency.all
+    @search = Competency.get_all_sorted.ransack(params[:q])
+    @competencies = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @page = params[:page] || 1
   end
 
   # GET /competencies/1
@@ -25,10 +27,9 @@ class CompetenciesController < ApplicationController
   # POST /competencies.json
   def create
     @competency = Competency.new(competency_params)
-
     respond_to do |format|
       if @competency.save
-        format.html { redirect_to @competency, notice: 'Competency was successfully created.' }
+        format.html { redirect_to competencies_path, notice: t('activerecord.successful.messages.created', :model => @competency.class.model_name.human) }
         format.json { render :show, status: :created, location: @competency }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class CompetenciesController < ApplicationController
   def update
     respond_to do |format|
       if @competency.update(competency_params)
-        format.html { redirect_to @competency, notice: 'Competency was successfully updated.' }
+        format.html { redirect_to competencies_path, notice: t('activerecord.successful.messages.updated', :model => @competency.class.model_name.human) }
         format.json { render :show, status: :ok, location: @competency }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class CompetenciesController < ApplicationController
   def destroy
     @competency.destroy
     respond_to do |format|
-      format.html { redirect_to competencies_url, notice: 'Competency was successfully destroyed.' }
+      format.html { redirect_to competencies_path, notice: t('activerecord.successful.messages.deleted', :model => @competency.class.model_name.human) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,8 @@ class CompetenciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def competency_params
-      params.fetch(:competency, {})
+      params.require(:competency).permit(
+        :code, :comp_name, :percentaje, :goal_type_id, :area_id
+      )
     end
 end

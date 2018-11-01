@@ -1174,6 +1174,7 @@ IdentificationType.create([
 ])
 
 Area.create([
+    {id: 0, name: 'TODAS LAS AREAS', code: '000'},
     {name: 'PRESIDENCIA', code: '001'},
     {name: 'VICEPRESIDENCIA', code: '002', area_id: 1},
     {name: 'ÁREA CONTABLE', code: '011', area_id: 2}
@@ -1214,6 +1215,7 @@ Role.create([
 User.create([
     {
       document: 1032459412, first_name: 'JONATHAN', first_lastname: 'GRANADOS', email: 'jonathan@gmail.com', password: 'Jon123', password_confirmation: 'Jon123', role_id: 1,
+      telephone: 1234, celphone: 1234, address: 'CRA 66', evaluation_role: 3, identification_type_id: 1, area_id: 1, charge_id: 1, genre_id: 1, generation_range_id: 1,
     },{
       document: 1234567890, first_name: 'EVALUADOR', first_lastname: 'TESTEO', email: 'evaluador@gmail.com', password: 'Eval123', password_confirmation: 'Eval123', role_id: 2,
       telephone: 1234, celphone: 1234, address: 'CRA 66', evaluation_role: 3, identification_type_id: 1, area_id: 1, charge_id: 1, genre_id: 1, generation_range_id: 1,
@@ -1221,4 +1223,41 @@ User.create([
       document: 1234567890, first_name: 'EVALUADO', first_lastname: 'TESTEO', email: 'evaluado@gmail.com', password: 'Eval123', password_confirmation: 'Eval123', role_id: 2,
       telephone: 1234, celphone: 1234, address: 'CRA 66', evaluation_role: 1, identification_type_id: 1, area_id: 2, charge_id: 1, genre_id: 1, generation_range_id: 1,
     },
+])
+
+Goal.create([
+    {
+      goal_name: 'INDICE DE FRECUENCIA TOTAL DE CASOS REGISTRABLES',
+      general_ind: 'INDICE DE FRECUENCIA TOTAL DE CASOS REGISTRABLES',
+      specific_ind: 'CUMPLIR CON EL LIMITE DE EVENTOS DE ACCIDENTE CON PERDIDA Y/O FATALIDADES, EVENTOS CON TRABAJO RESTRINGIDO Y EVENTOS CON TRATAMIENTOS MEDICOS',
+      code:'001', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 0
+    },{
+      goal_name: 'PRODUCCION DE ETANOL',
+      general_ind: 'PRODUCTIVIDAD DE PLANTA',
+      specific_ind: 'CUMPLIR CON LA PRODUCCION DE ETANOL PROYECTADO EN EL CASO DE NEGOCIO DE BIOENERGY',
+      code:'002', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 0
+    },{
+      goal_name: 'VENTA DE ENERGIA',
+      general_ind: 'PRODUCTIVIDAD DE PLANTA',
+      specific_ind: 'CUMPLIR CON LAS VENTAS DE ENERGIA PROYECTADAS EN EL CASO DE NEGOCIO DE BIOENERGY',
+      code:'003', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 1
+    },{
+      goal_name: 'DIAS EFECTIVOS DE MOLIENDA',
+      general_ind: 'PRODUCTIVIDAD DE PLANTA',
+      specific_ind: 'CUMPLIR CON LOS DIAS EFECTIVOS DE MOLIENDA DE CAÑA DE ACUERDO A LO PROYECTADO EN EL CASO DE NEGOCIO DE BIOENERGY',
+      code:'004', phases_number: 2, percentaje: 40, goal_type_id: 1, area_id: 2
+    },{
+      goal_name: 'EBITDA',
+      general_ind: 'EBITDA',
+      specific_ind: 'MAXIMIZAR LA AGREGACION DE VALOR PARA LOS ACCIONISTAS',
+      code:'005', phases_number: 2, percentaje: 40, goal_type_id: 1, area_id: 3
+    }
+])
+
+Competency.create([
+    {
+      code: '001', comp_name: 'TRABAJO EN EQUIPO', percentaje: 80, goal_type_id: 1, area_id: 0
+    },{
+      code: '002', comp_name: 'LIDERAZGO', percentaje: 20, goal_type_id: 1, area_id: 0
+    }
 ])

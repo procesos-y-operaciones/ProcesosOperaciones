@@ -5,6 +5,7 @@ class CreateEvaluations < ActiveRecord::Migration[5.1]
       t.integer :boss_id
       t.integer :step, default: 1
       t.string  :comment
+      t.string  :final_comment
       t.integer :final_score
       t.string  :resource
 

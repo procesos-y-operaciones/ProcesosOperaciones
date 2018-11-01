@@ -1,17 +1,51 @@
-<%= form_with(model: competency, local: true) do |form| %>
-  <% if competency.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(competency.errors.count, "error") %> prohibited this competency from being saved:</h2>
+<%= javascript_include_tag "competencies" %>
 
-      <ul>
-      <% competency.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="col-sm-8 offset-md-2">
+  <%= form_with(model: competency, local: true) do |form| %>
+    <% if competency.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(competency.errors.count, "error") %> prohibited this competency from being saved:</h2>
+        <ul>
+        <% competency.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <br />
+
+    <%= form.label :code, "Código", class:'form-label' %>
+    <div class="input-group">
+      <%= form.text_field :code, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+
+    <%= form.label :goal_type_id, "Tipo de Objetivo", class:'form-label' %>
+    <div class="input-group">
+      <%= form.collection_select(:goal_type_id, GoalType.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+
+    <%= form.label :area_id, "Área", class:'form-label' %>
+    <div class="input-group">
+      <%= form.collection_select(:area_id, Area.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+    </div>
+
+    <%= form.label :comp_name, "Nombre de la Competencia", class:'form-label' %>
+    <div class="input-group">
+      <%= form.text_field :comp_name, required:true, pattern:'[0-9A-Z ]*', title:t('general.messages.mayus_num'), class:'form-control' %>
+    </div>
+
+    <%= form.label :percentaje, "Porcentaje", class:'form-label' %>
+    <div class="input-group">
+      <%= form.number_field :percentaje, required:true, max:100, min:1, title:t('general.messages.num'), class:'form-control' %>
+      <%= form.label :percentaje, "%", class:'form-label' %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= form.submit t('general.buttons.submit'), class:"btn btn-default floatRight" %>
+      <%= link_to t('general.buttons.back'), competencies_path, class:"btn btn-default" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

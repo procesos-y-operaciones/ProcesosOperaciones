@@ -12,6 +12,8 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1
   # GET /evaluations/1.json
   def show
+    @goals = (Goal.get_global + current_user.area.goals).map { |i| [i.percent_name, i.id, {'data-percent': "#{i.percentaje}"} ] }
+    @competencies = (Competency.get_global + current_user.area.competencies).map { |i| [i.percent_name, i.id, {'data-percent': "#{i.percentaje}"} ] }
   end
 
   # GET /evaluations/new
@@ -94,6 +96,7 @@ class EvaluationsController < ApplicationController
       params.require(:evaluation).permit(
         :boss_id, :step, :comment, :final_score, :resource, :user_id, :period_id,
         evaluations_goals_attributes: EvaluationsGoal.attribute_names.map(&:to_sym).push(:_destroy),
+        evaluations_competencies_attributes: EvaluationsCompetency.attribute_names.map(&:to_sym).push(:_destroy),
       )
     end
 end

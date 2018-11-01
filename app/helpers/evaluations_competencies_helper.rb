@@ -1,0 +1,2 @@
+module EvaluationsCompetenciesHelper
+end

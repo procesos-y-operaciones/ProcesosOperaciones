@@ -16,7 +16,8 @@
 
 class Goal < ApplicationRecord
 
-  has_many  :phases
+  belongs_to    :area
+  has_many      :phases
   accepts_nested_attributes_for :phases, reject_if: :all_blank, allow_destroy: true
   has_and_belongs_to_many :evaluations
 
@@ -30,6 +31,14 @@ class Goal < ApplicationRecord
 
   def self.get_by_type(type)
     self.where(goal_type_id: type)
+  end
+
+  def self.get_global
+    self.where(area_id: 0)
+  end
+
+  def percent_name
+    self.percentaje.to_s + "% - " + self.goal_name
   end
 
 end

@@ -41,8 +41,15 @@ ActiveRecord::Schema.define(version: 20181030000429) do
   end
 
   create_table "competencies", force: :cascade do |t|
+    t.string "code"
+    t.string "comp_name"
+    t.integer "percentaje"
+    t.integer "goal_type_id"
+    t.integer "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_competencies_on_area_id"
+    t.index ["goal_type_id"], name: "index_competencies_on_goal_type_id"
   end
 
   create_table "contract_types", force: :cascade do |t|
@@ -84,6 +91,7 @@ ActiveRecord::Schema.define(version: 20181030000429) do
   end
 
   create_table "evaluations_competencies", force: :cascade do |t|
+    t.integer "score"
     t.integer "competency_id"
     t.integer "evaluation_id"
     t.datetime "created_at", null: false

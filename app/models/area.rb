@@ -14,6 +14,8 @@ class Area < ApplicationRecord
 
   has_many :areas
   has_many :users
+  has_many :goals
+  has_many :competencies
 
   def self.get_all_sorted
     self.order('created_at DESC')

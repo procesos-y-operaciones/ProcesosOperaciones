@@ -1,9 +1,8 @@
 <div class='nested-fields'>
-  <div class="input-group">
-    <%= f.collection_select(:goal_id, Goal.all, :id, :goal_name, {include_blank:'SELECCIONE'}, {required:true, class:'styled-select'}) %>
-    <%= link_to_remove_association f, class: "minibtn btn-default m-1" do %>
-      <span class="fa">&#x2212;</span>
-      Remover Objetivo
-    <% end %>
-  </div>
+  <%= f.select :goal_id, options_for_select(@goals, f.object.goal_id), {include_blank:'SELECCIONE'}, {required:true, class:'styled-select select-goals col-sm-10 m-1'} %>
+  <%= link_to_remove_association f, class: "minibtn btn-default m-1" do %>
+  <span class="fa">&#x2212;</span>
+  <% end %>
+  <br />
+  <br />
 </div>

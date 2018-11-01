@@ -29,7 +29,7 @@
 
     <%= form.label :area_id, "Área", class:'form-label' %>
     <div class="input-group">
-      <%= form.collection_select(:area_id, [Area.new(id: 0, name: 'TODAS LAS AREAS')]+Area.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
+      <%= form.collection_select(:area_id, Area.get_name_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'form-control'}) %>
     </div>
 
     <%= form.label :goal_name, "Nombre del Objetivo", class:'form-label' %>

@@ -1,0 +1,17 @@
+<%= form_with(model: evaluations_competency, local: true) do |form| %>
+  <% if evaluations_competency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evaluations_competency.errors.count, "error") %> prohibited this evaluations_competency from being saved:</h2>
+
+      <ul>
+      <% evaluations_competency.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

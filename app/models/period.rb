@@ -1,11 +1,13 @@
 # == Schema Information
 #
-# Table name: selfs
+# Table name: periods
 #
 #  id          :integer          not null, primary key
 #  name        :string
 #  code        :string
 #  state       :string
+#  resource    :integer
+#  boss_id     :integer
 #  date_beg_p1 :date
 #  date_end_p1 :date
 #  date_beg_p2 :date

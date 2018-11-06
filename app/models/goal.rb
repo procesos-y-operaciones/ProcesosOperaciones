@@ -3,13 +3,14 @@
 # Table name: goals
 #
 #  id            :integer          not null, primary key
+#  code          :string
+#  goal_name     :string
 #  phases_number :integer
+#  general_ind   :string
+#  specific_ind  :string
 #  percentaje    :integer
-#  name          :string
-#  comment       :string
-#  period_id     :integer
 #  goal_type_id  :integer
-#  evaluation_id :integer
+#  area_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

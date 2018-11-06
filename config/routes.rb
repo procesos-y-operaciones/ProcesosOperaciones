@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "users/evaluator", :to => "users#evaluator", :as => "evaluator_user"
   get "users/evaluate", :to => "users#evaluate", :as => "evaluate_user"
   get "users/accept", :to => "users#accept", :as => "accept_user"
+  get "users/approve", :to => "users#approve", :as => "approve_user"
   patch "users/update_step/:id", :to => "users#update_step", :as => "update_step_user"
   post "users/import", :to => "users#import", :as => "import_user"
   resources :users

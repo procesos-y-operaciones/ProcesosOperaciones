@@ -79,6 +79,10 @@ class UsersController < ApplicationController
     @evaluations = current_user.get_evaluates_accept
   end
 
+  def approve
+    @evaluations = current_user.get_evaluates_approve
+  end
+
   def import
     User.import(params[:file])
     redirect_to users_path, notice: "Datos importados"

@@ -18,8 +18,8 @@
 #  celphone               :string
 #  address                :string
 #  evaluation_role        :integer          default(3)
-#  step                   :integer          default(1)
 #  terms                  :boolean          default(FALSE)
+#  resource               :string
 #  identification_type_id :integer
 #  departament_id         :integer
 #  city_id                :integer
@@ -28,7 +28,6 @@
 #  genre_id               :integer
 #  generation_range_id    :integer
 #  role_id                :integer
-#  user_id                :integer
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -36,6 +35,10 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 require 'test_helper'

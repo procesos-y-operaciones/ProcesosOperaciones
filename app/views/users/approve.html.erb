@@ -1,4 +1,4 @@
-<h2 class="center second">Aceptar Evaluados</h2>
+<h2 class="center second">Aprobar Objetivos</h2>
 <br />
 <br />
 
@@ -19,8 +19,9 @@
         <td class="p-4"></td>
         <td class="p-4">
           <%= form_for(e, url: evaluation_url(e)) do |f| %>
-            <%= f.hidden_field :step, value: 3 %>
-            <%= f.hidden_field :resource, value: 3 %>
+            <%= f.hidden_field :step, value: 5 %>
+            <%= f.hidden_field :resource, value: 4 %>
+            <%= f.hidden_field :comment, value:'APROBADO' %>
             <%= f.button :submit, class:'minibtn btn-default' do %>
               <span class="fa fa-user-plus">
             <% end %>
@@ -28,8 +29,9 @@
         </td>
         <td class="p-4">
           <%= form_for(e, url: evaluation_url(e)) do |f| %>
-            <%= f.hidden_field :step, value: 1 %>
-            <%= f.hidden_field :resource, value: 3 %>
+            <%= f.hidden_field :step, value: 3 %>
+            <%= f.hidden_field :resource, value: 4 %>
+            <%= f.text_area :comment, required:true, placeholder:'COMENTARIO' %>
             <%= f.button :submit, class:'minibtn btn-default' do %>
               <span class="fa fa-user-times">
             <% end %>
@@ -39,3 +41,4 @@
     <% end %>
   </tbody>
 </table>
+<hr />

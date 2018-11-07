@@ -69,6 +69,8 @@ class EvaluationsGoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evaluations_goal_params
-      params.fetch(:evaluations_goal, {})
+      params.require(:evaluations_goal).permit(
+        phases_users_attributes: PhasesUser.attribute_names.map(&:to_sym).push(:_destroy),
+      )
     end
 end

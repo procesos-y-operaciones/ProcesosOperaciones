@@ -1,0 +1,12 @@
+<div class='nested-fields'>
+  <%= f.select :goal_id, options_for_select(@goals, f.object.goal_id), {include_blank:'SELECCIONE'}, {required:true, disabled:true, class:'styled-select select-goals col-sm-12 m-1'} %>
+  <div class="col-sm-12">
+    <div id="phases_users_container" class="phases_users">
+      <%= f.fields_for :phases_users do |phases_user| %>
+      <%= render 'phases_user_fields', f: phases_user %>
+      <% end %>
+    </div>
+  </div>
+  <hr />
+
+</div>

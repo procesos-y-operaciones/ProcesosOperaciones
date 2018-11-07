@@ -1,62 +1,26 @@
-<%= javascript_include_tag "step3" %>
-<h2 class="center second">Evaluación Objetivos</h2>
+<h2 class="center second">Seguimiento de Objetivos</h2>
 <h3 class="center second">Paso 5</h3>
 <hr />
 <br />
 <p class="center">
-  ¡Evalua tus objetivos!
+  Seguimiento de tus objetivos!
 </p>
 <br />
-<% if @evaluation.comment.present? %>
-  <div>
-    <h5 class="first">Comentario: </h5>
-    <p class="second">
-      <%= @evaluation.comment %>
-    </p>
-  </div>
-<% end %>
-<hr />
 <%= form_for(@evaluation, url: evaluation_url(@evaluation)) do |f| %>
   <div class="row p-4">
-    <div class="offset-md-2 col-sm-8">
-      <%= f.hidden_field :resource, value:2 %>
-      <%= f.hidden_field :step, value:4 %>
 
-      <%= f.label :evaluations_goals, "Objetivos", class:'form-label' %>
+    <%= f.hidden_field :resource, value:2 %>
+    <%= f.hidden_field :step, value:4 %>
+
+    <%= f.label :evaluations_goals, "Objetivos", class:'m-4 form-label' %>
+    <div class="col-sm-12">
       <div id="evaluations_goals_container" class="evaluations_goals">
         <%= f.fields_for :evaluations_goals do |evaluations_goal| %>
-          <%= render 'evaluations_goal_fields', f: evaluations_goal %>
+        <%= render 'evaluations_goal_follow', f: evaluations_goal %>
         <% end %>
       </div>
-      <br />
-      <div class="input-group">
-        <p class="first col-sm-2 m-1">Total:</p>
-        <p class="first col-sm-3 m-1" id="goals_percent">0%</p>
-        <%= link_to_add_association f, :evaluations_goals, data: {association_insertion_node: '.evaluations_goals', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
-        <span class="fa">&#x2b;</span>
-          Agregar Objetivo
-        <% end %>
-      </div>
-
-      <hr />
-
-      <%= f.label :evaluations_competencies, "Compentecias", class:'form-label' %>
-      <div id="evaluations_competencies_container" class="evaluations_competencies">
-        <%= f.fields_for :evaluations_competencies do |evaluations_competency| %>
-          <%= render 'evaluations_competency_fields', f: evaluations_competency %>
-        <% end %>
-      </div>
-      <br />
-      <div class="input-group">
-        <p class="first col-sm-2 m-1">Total:</p>
-        <p class="first col-sm-3 m-1" id="competencies_percent">0%</p>
-        <%= link_to_add_association f, :evaluations_competencies, data: {association_insertion_node: '.evaluations_competencies', association_insertion_method: :append}, class: "minibtn btn-default m-1" do %>
-        <span class="fa">&#x2b;</span>
-          Agregar Competencia
-        <% end %>
-      </div>
-      <hr />
-
-      <%= f.submit t('general.buttons.submit'), id:'submit_butt', class:"btn btn-default floatRight m-4" %>
     </div>
+
+  </div>
+  <%= f.submit t('general.buttons.submit'), id:'submit_butt', class:"btn btn-default floatRight m-4" %>
 <% end %>

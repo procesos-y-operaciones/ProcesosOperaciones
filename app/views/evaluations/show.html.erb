@@ -20,7 +20,12 @@ when "FASE 2"
     render "error"
   end
 when "FASE 3"
-  render "step2"
+  case @evaluation.step
+  when 5
+    render "step5"
+  else
+    render "error"
+  end
 when "FASE 4"
   render "step2"
 else

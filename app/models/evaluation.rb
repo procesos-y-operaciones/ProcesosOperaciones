@@ -16,6 +16,8 @@
 
 class Evaluation < ApplicationRecord
 
+  belongs_to :period
+
   belongs_to :user
   has_many :evaluations_goals
   has_many :goals, :through => :evaluations_goals, :class_name => 'EvaluationsGoal'

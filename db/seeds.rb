@@ -1230,27 +1230,27 @@ Goal.create([
       goal_name: 'INDICE DE FRECUENCIA TOTAL DE CASOS REGISTRABLES',
       general_ind: 'INDICE DE FRECUENCIA TOTAL DE CASOS REGISTRABLES',
       specific_ind: 'CUMPLIR CON EL LIMITE DE EVENTOS DE ACCIDENTE CON PERDIDA Y/O FATALIDADES, EVENTOS CON TRABAJO RESTRINGIDO Y EVENTOS CON TRATAMIENTOS MEDICOS',
-      code:'001', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 0
+      code:'001', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 0, phases: [Phase.create(proposed: 20), Phase.create(proposed: 20)]
     },{
       goal_name: 'PRODUCCION DE ETANOL',
       general_ind: 'PRODUCTIVIDAD DE PLANTA',
       specific_ind: 'CUMPLIR CON LA PRODUCCION DE ETANOL PROYECTADO EN EL CASO DE NEGOCIO DE BIOENERGY',
-      code:'002', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 0
+      code:'002', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 0, phases: [Phase.create(proposed: 20), Phase.create(proposed: 20)]
     },{
       goal_name: 'VENTA DE ENERGIA',
       general_ind: 'PRODUCTIVIDAD DE PLANTA',
       specific_ind: 'CUMPLIR CON LAS VENTAS DE ENERGIA PROYECTADAS EN EL CASO DE NEGOCIO DE BIOENERGY',
-      code:'003', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 1
+      code:'003', phases_number: 2, percentaje: 30, goal_type_id: 1, area_id: 1, phases: [Phase.create(proposed: 20), Phase.create(proposed: 20)]
     },{
       goal_name: 'DIAS EFECTIVOS DE MOLIENDA',
       general_ind: 'PRODUCTIVIDAD DE PLANTA',
       specific_ind: 'CUMPLIR CON LOS DIAS EFECTIVOS DE MOLIENDA DE CAÑA DE ACUERDO A LO PROYECTADO EN EL CASO DE NEGOCIO DE BIOENERGY',
-      code:'004', phases_number: 2, percentaje: 40, goal_type_id: 1, area_id: 2
+      code:'004', phases_number: 2, percentaje: 40, goal_type_id: 1, area_id: 2, phases: [Phase.create(proposed: 20), Phase.create(proposed: 20)]
     },{
       goal_name: 'EBITDA',
       general_ind: 'EBITDA',
       specific_ind: 'MAXIMIZAR LA AGREGACION DE VALOR PARA LOS ACCIONISTAS',
-      code:'005', phases_number: 2, percentaje: 40, goal_type_id: 1, area_id: 3
+      code:'005', phases_number: 2, percentaje: 40, goal_type_id: 1, area_id: 3, phases: [Phase.create(proposed: 20), Phase.create(proposed: 20)]
     }
 ])
 

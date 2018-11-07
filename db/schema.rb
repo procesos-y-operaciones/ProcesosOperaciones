@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20181030000429) do
     t.integer "boss_id"
     t.integer "step", default: 1
     t.string "comment"
+    t.string "final_comment"
     t.integer "final_score"
     t.string "resource"
     t.integer "user_id"
@@ -182,11 +183,12 @@ ActiveRecord::Schema.define(version: 20181030000429) do
 
   create_table "phases_users", force: :cascade do |t|
     t.integer "reached"
+    t.integer "proposed"
     t.string "compromise"
-    t.integer "goals_evaluations_id"
+    t.integer "evaluations_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["goals_evaluations_id"], name: "index_phases_users_on_goals_evaluations_id"
+    t.index ["evaluations_goal_id"], name: "index_phases_users_on_evaluations_goal_id"
   end
 
   create_table "roles", force: :cascade do |t|

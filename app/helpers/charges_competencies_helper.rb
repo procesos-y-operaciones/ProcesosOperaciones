@@ -1,0 +1,2 @@
+module ChargesCompetenciesHelper
+end

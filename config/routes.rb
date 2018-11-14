@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :charges_goals
+  resources :charges_competencies
   resources :evaluations_competencies
   resources :evaluations_goals
   resources :phases_users

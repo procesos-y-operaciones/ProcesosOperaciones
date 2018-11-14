@@ -1,0 +1,2 @@
+module ChargesGoalsHelper
+end

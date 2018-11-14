@@ -10,6 +10,7 @@ class CreateEvaluations < ActiveRecord::Migration[5.1]
       t.string  :resource
 
       t.belongs_to  :user, index: true
+      t.belongs_to  :charge, index: true
       t.belongs_to  :period, index: true
 
       t.timestamps

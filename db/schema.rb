@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030000429) do
+ActiveRecord::Schema.define(version: 20181107211026) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,26 @@ ActiveRecord::Schema.define(version: 20181030000429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_charges_on_area_id"
+  end
+
+  create_table "charges_competencies", force: :cascade do |t|
+    t.integer "percentaje"
+    t.integer "charge_id"
+    t.integer "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["charge_id"], name: "index_charges_competencies_on_charge_id"
+    t.index ["goal_id"], name: "index_charges_competencies_on_goal_id"
+  end
+
+  create_table "charges_goals", force: :cascade do |t|
+    t.integer "percentaje"
+    t.integer "charge_id"
+    t.integer "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["charge_id"], name: "index_charges_goals_on_charge_id"
+    t.index ["goal_id"], name: "index_charges_goals_on_goal_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -84,9 +104,11 @@ ActiveRecord::Schema.define(version: 20181030000429) do
     t.integer "final_score"
     t.string "resource"
     t.integer "user_id"
+    t.integer "charge_id"
     t.integer "period_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["charge_id"], name: "index_evaluations_on_charge_id"
     t.index ["period_id"], name: "index_evaluations_on_period_id"
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
@@ -159,16 +181,6 @@ ActiveRecord::Schema.define(version: 20181030000429) do
     t.string "name"
     t.string "code"
     t.string "state"
-    t.integer "resource"
-    t.integer "boss_id"
-    t.date "date_beg_p1"
-    t.date "date_end_p1"
-    t.date "date_beg_p2"
-    t.date "date_end_p2"
-    t.date "date_beg_p3"
-    t.date "date_end_p3"
-    t.date "date_beg_p4"
-    t.date "date_end_p4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

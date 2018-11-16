@@ -12,10 +12,11 @@ services:
       MYSQL_HOST: pyo_db
   pyo_ms:
     build: .
-    command: bash -c "sleep 10 && rm -f tmp/pids/server.pid && bundle exec rails s -e production -p 3000 -b '0.0.0.0'"
+    command: bash -c "sleep 40 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate db:seed RAILS_ENV=production && bundle exec rails assets:clobber assets:precompile RAILS_ENV=production && bundle exec rails s -e production -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     environment:
-      SECRET_KEY_BASE: 248fb0e32fabd5b72e34ccb7d3a52c656c6bc361465b6f6176dd2b2724ef6d58dd47a2590458fd0fc7d2fc7ffb860f1020eb6d5d5103171b23a29b83a2ba14be
+      RAILS_ENV: production
+      SECRET_KEY_BASE: 1177bac74d7619cb4b725f91897929279cb12c71be05c8ae73ebb65b2270714c4e386e25975a08d33728183e1f212cdd2dd2404646e12185e2be57570bf3a224
     depends_on:
       - pyo_db

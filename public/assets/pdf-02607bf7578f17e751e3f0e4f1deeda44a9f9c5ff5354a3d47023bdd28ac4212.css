@@ -1,0 +1,118 @@
+/* line 11, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.main {
+  color: #d7dce7;
+}
+
+/* line 13, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.first {
+  color: #dd8705;
+}
+
+/* line 15, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.second {
+  color: #014a7f;
+}
+
+/* line 17, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.third {
+  color: #d7dce7;
+}
+
+/* line 19, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.grey {
+  color: #f9f9f9;
+}
+
+/* line 21, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.white {
+  color: #c6c6c6;
+}
+
+/* line 23, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.black {
+  color: black;
+}
+
+/* line 25, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.hw {
+  width: 50%;
+}
+
+/* line 27, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.fw {
+  width: 100%;
+}
+
+/* line 29, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.shadow {
+  box-shadow: 0 0 20px #c6c6c6;
+}
+
+/* line 32, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+thead tr th {
+  color: #dd8705;
+}
+
+/* BODY */
+/* line 36, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+html, body {
+  font-family: "Open Sans", "Josefin Slab", "Arvo", "Lato";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/* line 43, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+h1, h2, h3, h4, h5, h6, p, th, ol, li, label, select, input {
+  font-family: "Open Sans", "Josefin Slab", "Arvo", "Lato";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+/* ALIGN */
+/* line 51, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.left {
+  text-align: left;
+}
+
+/* line 53, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.center {
+  text-align: center;
+}
+
+/* line 55, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.right {
+  text-align: right;
+}
+
+/* line 57, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.justify {
+  text-align: justify;
+}
+
+/* line 59, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+.floatRight {
+  float: right;
+}
+
+/* line 62, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #DFE3EC;
+}
+
+/* line 69, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+li {
+  float: left;
+}
+/* line 71, /home/jonathan/Documents/ProcesosOperaciones/ProcesosOperaciones/app/assets/stylesheets/pdf.sass */
+li a {
+  display: block;
+  padding: 8px;
+}

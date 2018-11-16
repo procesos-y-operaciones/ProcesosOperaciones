@@ -20,3 +20,4 @@
 
 # Ignore images and files
 /public/assets
+/public/images

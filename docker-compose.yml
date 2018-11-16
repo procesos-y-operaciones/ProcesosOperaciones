@@ -16,6 +16,7 @@ services:
     ports:
       - "3000:3000"
     environment:
+      RAILS_ENV: production
       SECRET_KEY_BASE: 1177bac74d7619cb4b725f91897929279cb12c71be05c8ae73ebb65b2270714c4e386e25975a08d33728183e1f212cdd2dd2404646e12185e2be57570bf3a224
     depends_on:
       - pyo_db

@@ -20,10 +20,11 @@ class Evaluation < ApplicationRecord
 
   belongs_to :user
   has_many :evaluations_goals
-  has_many :goals, :through => :evaluations_goals, :class_name => 'EvaluationsGoal'
+  has_many :goals, :through => :evaluations_goals, :class_name => 'Goal'
   accepts_nested_attributes_for :evaluations_goals, reject_if: :all_blank, allow_destroy: true
+  
   has_many :evaluations_competencies
-  has_many :competencies, :through => :evaluations_competencies, :class_name => 'EvaluationsCompetency'
+  has_many :competencies, :through => :evaluations_competencies, :class_name => 'Competency'
   accepts_nested_attributes_for :evaluations_competencies, reject_if: :all_blank, allow_destroy: true
 
   def self.get_all_sorted

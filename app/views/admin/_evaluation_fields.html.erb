@@ -1,13 +1,13 @@
 <div class='nested-fields'>
+  <div class="col-sm-12">
+    <%= f.label :period_id, "Período de Vigencia", class:'form-label' %>
+  </div>
   <div class="row">
-    <div class="col-sm-3">
-      <%= f.label :period_id, "Período de Vigencia", class:'form-label' %>
-    </div>
     <div class="col-sm-9">
       <%= f.collection_select(:period_id, Period.get_all_sorted, :id, :name, {include_blank:'SELECCIONE'}, {required:true, class:'styled-select form-control'}) %>
     </div>
-    <div class="offset-md-8 col-sm-4">
-      <%= link_to_remove_association f, class: "minibtn btn-default m-1" do %>
+    <div class="col-sm-3 p-2 center">
+      <%= link_to_remove_association f, class: "minibtn btn-default" do %>
         <span class="fa">&#x2212;</span>
         Borrar
       <% end %>

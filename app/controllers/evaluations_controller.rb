@@ -34,7 +34,7 @@ class EvaluationsController < ApplicationController
       when "1"
         redirect_to admin_users_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
       when "2"
-        redirect_to evaluation_path(@evaluation), notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
+        redirect_to evaluated_index_path(@evaluation), notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
       else
         redirect_to evaluations_path, notice: t('activerecord.successful.messages.created', :model => @evaluation.class.model_name.human)
       end
@@ -43,7 +43,7 @@ class EvaluationsController < ApplicationController
       when "1"
         redirect_to admin_users_path, error: "No se pudo crear la evaluación"
       when "2"
-        redirect_to evaluation_path(@evaluation), error: "No se pudo crear la evaluación"
+        redirect_to evaluated_index_path(@evaluation), error: "No se pudo crear la evaluación"
       else
         render :new
       end
@@ -58,11 +58,11 @@ class EvaluationsController < ApplicationController
       when "1"
         redirect_to admin_users_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
       when "2"
-        redirect_to evaluation_path(@evaluation), notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
+        redirect_to evaluated_index_path(@evaluation), notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
       when "3"
-        redirect_to accept_user_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
+        redirect_to evaluator_accept_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
       when "4"
-        redirect_to approve_user_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
+        redirect_to evaluator_approve_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
       else
         redirect_to evaluations_path, notice: t('activerecord.successful.messages.updated', :model => @evaluation.class.model_name.human)
       end
@@ -71,11 +71,11 @@ class EvaluationsController < ApplicationController
       when "1"
         redirect_to admin_users_path, error: "No se pudo actualizar la evaluación"
       when "2"
-        redirect_to evaluation_path(@evaluation), error: "No se pudo actualizar la evaluación"
+        redirect_to evaluated_index_path(@evaluation), error: "No se pudo actualizar la evaluación"
       when "3"
-        redirect_to accept_user_path, error: "No se pudo actualizar la evaluación"
+        redirect_to evaluator_accept_path, error: "No se pudo actualizar la evaluación"
       when "4"
-        redirect_to approve_user_path, error: "No se pudo actualizar la evaluación"
+        redirect_to evaluator_approve_path, error: "No se pudo actualizar la evaluación"
       else
         render :new
       end

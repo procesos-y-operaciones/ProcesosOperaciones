@@ -43,9 +43,15 @@ Rails.application.routes.draw do
   get "admin/users"
   get "admin/evaluation/:id", to: "admin#evaluation", as: "admin_evaluation"
 
-
   get "cities_list/:state", to: "application#cities"
   get "step/:evaluation", to: "application#step"
+
+  get "evaluated/index/:id", to: "evaluated#index", as:"evaluated_index"
+  get "evaluated/step1"
+
+  get "evaluator/index"
+  get "evaluator/accept"
+  get "evaluator/approve"
 
   root to: "home#index"
 

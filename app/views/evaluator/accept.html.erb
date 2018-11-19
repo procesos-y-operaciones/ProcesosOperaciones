@@ -1,0 +1,42 @@
+<h2 class="center second">Aceptar Evaluados</h2>
+<br />
+<br />
+
+<table class="table table-responsive-sm">
+  <thead class="first">
+    <tr>
+      <th class="p-4">Nombre</th>
+      <th class="p-4"></th>
+      <th class="p-4">Aceptar</th>
+      <th class="p-4">Rechazar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evaluations.each do |e| %>
+      <tr>
+        <td class="p-4"><%= e.user.full_name %></td>
+        <td class="p-4"></td>
+        <td class="p-4">
+          <%= form_for(e, url: evaluation_url(e)) do |f| %>
+            <%= f.hidden_field :step, value: 3 %>
+            <%= f.hidden_field :resource, value: 3 %>
+            <%= f.button :submit, class:'minibtn btn-default' do %>
+              <span class="fa fa-user-plus">
+            <% end %>
+          <% end %>
+        </td>
+        <td class="p-4">
+          <%= form_for(e, url: evaluation_url(e)) do |f| %>
+            <%= f.hidden_field :step, value: 1 %>
+            <%= f.hidden_field :resource, value: 3 %>
+            <%= f.button :submit, class:'minibtn btn-default' do %>
+              <span class="fa fa-user-times">
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr />

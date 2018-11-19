@@ -1,5 +1,5 @@
 <div class="offset-sm-3 col-sm-6">
   <% @evaluations.each do |e| %>
-    <%= link_to e.get_period_name, evaluation_path(e), class:"btn btn-grad mb-2 fw" %>
+    <%= link_to e.get_period_name, evaluated_index_path(e), class:"btn btn-grad mb-2 fw" %>
   <% end %>
 </div>

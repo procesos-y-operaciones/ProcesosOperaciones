@@ -14,6 +14,10 @@ class EvaluatedController < ApplicationController
       render "step3"
     when 4
       render "step4"
+    when 5
+      @goals = (Goal.get_global + current_user.area.goals).map { |i| [i.percent_name, i.id, {'data-percent': "#{i.percentaje}"} ] }
+      @competencies = (Competency.get_global + current_user.area.competencies).map { |i| [i.percent_name, i.id, {'data-percent': "#{i.percentaje}"} ] }
+      render "step5"
     else
       render "wait"
     end

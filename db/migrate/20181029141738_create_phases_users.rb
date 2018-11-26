@@ -5,6 +5,7 @@ class CreatePhasesUsers < ActiveRecord::Migration[5.1]
       t.integer :reached
       t.integer :proposed
       t.string  :compromise
+      t.date    :expiration
 
       t.belongs_to  :evaluations_goal, index: true
 

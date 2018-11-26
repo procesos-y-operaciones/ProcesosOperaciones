@@ -3,6 +3,7 @@ class CreatePhases < ActiveRecord::Migration[5.1]
     create_table :phases do |t|
 
       t.integer   :proposed
+      t.date   :expiration
 
       t.belongs_to  :goal, index: true
 

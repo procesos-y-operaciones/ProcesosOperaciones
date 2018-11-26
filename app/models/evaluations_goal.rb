@@ -17,8 +17,8 @@ class EvaluationsGoal < ApplicationRecord
   accepts_nested_attributes_for :phases_users, reject_if: :all_blank, allow_destroy: true
 
   before_save do
-    self.goal.phases.pluck(:proposed).each do |i|
-      self.phases_users.append(PhasesUser.create(proposed: i))
+    self.goal.phases.each do |i|
+      self.phases_users.append(PhasesUser.create(proposed: i.proposed, expiration: i.expiration))
     end
   end
 

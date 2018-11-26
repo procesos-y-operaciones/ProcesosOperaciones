@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20181107211026) do
 
   create_table "phases", force: :cascade do |t|
     t.integer "proposed"
+    t.date "expiration"
     t.integer "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -197,6 +198,7 @@ ActiveRecord::Schema.define(version: 20181107211026) do
     t.integer "reached"
     t.integer "proposed"
     t.string "compromise"
+    t.date "expiration"
     t.integer "evaluations_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,26 @@
+<h2 class="center second">Seguimiento Objetivos</h2>
+<br />
+<br />
+
+<table class="table table-responsive-sm">
+  <thead class="first">
+    <tr>
+      <th class="p-4">Nombre</th>
+      <th class="p-4"></th>
+      <th class="p-4"></th>
+      <th class="p-4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evaluations.each do |e| %>
+      <tr>
+        <td class="p-4"><%= e.user.full_name %></td>
+        <td class="p-4"></td>
+        <td class="p-4"></td>
+        <td class="p-4"><%= link_to "Ver", evaluator_show_path(e), remote: true, class:"btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr />

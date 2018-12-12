@@ -1,0 +1,19 @@
+<div class='nested-fields'>
+  <p class="second"><%= Goal.find(f.object.goal_id).goal_name.titleize %></p>
+  <table class="table table-responsive-sm">
+    <thead class="first">
+      <tr>
+        <th class="center">Realizado</th>
+        <th class="center">Propuesto</th>
+        <th class="center">Expiración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div id="phases_users_container" class="phases_users">
+        <%= f.fields_for :phases_users do |phases_user| %>
+        <%= render 'phases_user_fields', f: phases_user %>
+        <% end %>
+      </div>
+    </tbody>
+  </table>
+</div>

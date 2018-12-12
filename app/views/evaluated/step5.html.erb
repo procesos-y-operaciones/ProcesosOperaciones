@@ -1,3 +1,4 @@
+<%= javascript_include_tag "step5" %>
 <h2 class="center second">Seguimiento de Objetivos</h2>
 <h3 class="center second">Paso 5</h3>
 <hr />
@@ -10,10 +11,10 @@
   <div class="row p-4">
 
     <%= f.hidden_field :resource, value:2 %>
-    <%= f.hidden_field :step, value:4 %>
+    <%= f.hidden_field :step, id:"step" %>
 
     <%= f.label :evaluations_goals, "Objetivos", class:'m-4 form-label' %>
-    <div class="col-sm-12">      
+    <div class="col-sm-12">
       <div id="evaluations_goals_container" class="evaluations_goals">
         <%= f.fields_for :evaluations_goals do |evaluations_goal| %>
         <%= render 'evaluations_goal_follow', f: evaluations_goal %>

@@ -1,0 +1,26 @@
+<div id="product-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title first"><%= "Evaluacion #{@evaluation.user.full_name.titleize}" %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <%= form_for @evaluation, remote: true do |f| %>
+        <div class="modal-body">
+          <%= f.label :evaluations_goals, "Objetivos", class:'m-4 form-label' %>
+          <div class="col-sm-12">
+            <div id="evaluations_goals_container" class="evaluations_goals">
+              <%= f.fields_for :evaluations_goals do |evaluations_goal| %>
+              <%= render 'evaluations_goal_follow', f: evaluations_goal %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= f.submit t('general.buttons.submit'), id:'submit_butt', class:"btn btn-default floatRight" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

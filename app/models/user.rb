@@ -77,6 +77,10 @@ class User < ApplicationRecord
     Evaluation.where(step: 4, boss_id: self.id)
   end
 
+  def get_evaluates_trace
+    Evaluation.where(step: 5, boss_id: self.id)
+  end
+
   def get_bosses
     if Area.exists?(self.area_id)
       high_area = Area.find(self.area_id)

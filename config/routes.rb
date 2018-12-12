@@ -52,6 +52,8 @@ Rails.application.routes.draw do
   get "evaluator/index"
   get "evaluator/accept"
   get "evaluator/approve"
+  get "evaluator/trace"
+  get "evaluator/show/:id", to: "evaluator#show", as:"evaluator_show"
 
   root to: "home#index"
 

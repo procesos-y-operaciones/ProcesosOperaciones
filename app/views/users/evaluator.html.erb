@@ -3,7 +3,8 @@
 <br />
 
 <div class="row">
-  <div class="col-sm-3 center">
+
+  <div class="col-sm-4 center">
     <%= link_to evaluator_accept_path, class: "btn-circle btn-inverse" do %>
     <span class="fa">&#xf2bd;</span>
     <% end %>
@@ -13,7 +14,7 @@
     </p>
   </div>
 
-  <div class="col-sm-3 center">
+  <div class="col-sm-4 center">
     <%= link_to evaluator_approve_path, class: "btn-circle btn-inverse" do %>
     <span class="fa">&#xf2bd;</span>
     <% end %>
@@ -22,4 +23,15 @@
       Aprobar Objetivos y Competencias
     </p>
   </div>
+
+  <div class="col-sm-4 center">
+    <%= link_to evaluator_trace_path, class: "btn-circle btn-inverse" do %>
+    <span class="fa">&#xf2bd;</span>
+    <% end %>
+    <br>
+    <p class="second">
+      Seguimiento de Objetivos
+    </p>
+  </div>
+
 </div>

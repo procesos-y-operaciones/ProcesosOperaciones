@@ -8,4 +8,12 @@ class EvaluatorController < ApplicationController
     @evaluations = current_user.get_evaluates_approve
   end
 
+  def trace
+    @evaluations = current_user.get_evaluates_trace
+  end
+
+  def show
+    @evaluation = Evaluation.find(params[:id])
+  end
+
 end

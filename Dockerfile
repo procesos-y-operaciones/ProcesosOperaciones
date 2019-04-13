@@ -6,7 +6,6 @@ RUN mkdir /pyo_ms
 WORKDIR /pyo_ms
 
 COPY Gemfile /pyo_ms/Gemfile
-COPY Gemfile.lock /pyo_ms/Gemfile.lock
 
 RUN bundle install
 COPY . /pyo_ms

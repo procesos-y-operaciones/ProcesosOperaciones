@@ -1,0 +1,1 @@
+(function(){$(function(){return $(".reached").each(function(e){var a,n;if(n=$(".reached")[e],$(".proposed")[e],a=$(".expiration")[e],new Date(a.value)<new Date&&(n.readOnly=!0),""!==n.value)return $("#step").val(7)})})}).call(this);

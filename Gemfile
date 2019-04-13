@@ -32,11 +32,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # Devise for sessions.
-gem 'devise'
+gem 'devise', ">= 4.6.0"
 # Error and Alert messages.
 gem 'toastr-rails'
 # Bootstrap
-gem 'bootstrap', '~> 4.1.3'
+gem "bootstrap", ">= 4.3.1"
 # Jquery
 gem 'jquery-rails'
 # Can Can

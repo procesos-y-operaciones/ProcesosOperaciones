@@ -6,9 +6,13 @@
   * Docker-compose
 
 * Build & Run
-  * Run the command shell: 
-    * `docker-compose build`
-    * `docker-compose up`
-    * `docker exec -it pyo_ms /bin/bash`
-    * `rails db:migrate`
-    * `rails db:seed`
+  * Production Environment
+    * Run the command shell: 
+      * `docker-compose build`
+      * `docker-compose up`
+      * `docker exec -it pyo_ms /bin/bash`
+      * `rails db:migrate`
+      * `rails db:seed`
+  * Development Environment
+    * Run the command shell: 
+      * `rails s`
